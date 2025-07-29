@@ -1,0 +1,31 @@
+Brainstorming
+
+How to upload to Dryad and SRA to prepare for publishing
+How to use github, specifically for genomics projects
+  How to link scripts from R and from cluster
+  What to put there/what to avoid uploading
+  How to write useful readmes so the code is easy to follow
+Ways to organize data/directory stuctures for projects
+  For the cluster and personal computers
+Basic tutorial for processing genomic data
+How to use the cluster
+  Organizing
+  Running jobs
+  Moving files over
+Long term storage of data!!
+  Cluster deletes stuff, how to link with CSU OneDrive for long-term storage
+  Saving scripts on github
+How to write better code
+  Notes and trouble shooting
+  Using branches to try new stuff?
+  Cleaning up final versions of code so that they are easy to follow
+  Basics of reproducible science
+In favor of a commonplace book for grad students
+Useful scripts we all run all the time
+  Making PCA's
+  How to make figures nice
+  Making maps (especially for sample data)
+  Where to find a collection of our lab code...
+  
+  
+  
