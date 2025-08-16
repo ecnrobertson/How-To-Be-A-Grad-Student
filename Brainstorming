@@ -2,9 +2,13 @@ Brainstorming
 
 How to upload to Dryad and SRA to prepare for publishing
 How to use github, specifically for genomics projects
+  https://www.google.com/search?q=how+to+set+up+a+textbook+through+github&rlz=1C5CHFA_enUS1089US1102&oq=how+to+set+up+a+textbook+through+github&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORigATIHCAEQIRigATIHCAIQIRigATIHCAMQIRigATIHCAQQIRifBTIHCAUQIRifBTIHCAYQIRifBTIHCAcQIRifBTIHCAgQIRifBTIHCAkQIRifBdIBCDQyNDdqMGo0qAIAsAIB&sourceid=chrome&ie=UTF-8#fpstate=ive&vld=cid:6dd44426,vid:tRZGeaHPoaw,st:0
+  https://www.youtube.com/watch?v=DnwEaa5QtpI
   How to link scripts from R and from cluster
   What to put there/what to avoid uploading
   How to write useful readmes so the code is easy to follow
+  Setting up an R project linked with a github
+    oh crap i forgot to link when i set up, now what
 Ways to organize data/directory stuctures for projects
   For the cluster and personal computers
 Basic tutorial for processing genomic data

@@ -1,0 +1,49 @@
+---
+title: "Uploading Data for Publishing"
+output: html_document
+author: Erica Robertson
+date: "2025-07-30"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+So, once you've written your manuscript, there are a couple steps before you can actually submit. The exact formatting requirements vary by journal, but one thing that is universal is uploading your data so that it's publicly available. The process that I follow is that code and workflows go on GitHub, but the actual genomic data is too large to store there. So we can use other resources to manage that data. For my manuscript submission to Molecular Ecology, I uploaded all my scripts on GitHub, my GWAS and Fst results went onto Dryad, and my raw genomic data (fastq files) went onto NCBI Short Read Archive (SRA). 
+
+The process is a little tedius, but I thought I'd break it down here, for my future reference and others.
+
+#Dryad
+You get access to Dryad <https://datadryad.org/> through your university, so you can set up an account that way. You also link your ORCID, so your data is associated with you as an author and your other works. Once you start a submission, most of the steps are clear, so I'm just going to put a couple notes here about it.
+
+The data organization is a little frustrating as you can't transfer your folders over. So what I did was zip my folders to upload them with their file structure intact. For mine, I zipped the bslmm_output, bslmm_results, lmm_output, lmm_results, etc. Then, in the README section, take the time to create a clear layout of what in each zip, and what's in each folder and file. Importantly, they like if you define what each column is in .csv or dataframe. This is a super important step to make your data accessible. I like the "Build a README" for this as it gives you a nice starting format. But you have to go in and make the column definitions for the zipped files yourself, along with the general description of what's in there.
+
+#NCBI SRA
+This is the tougher one.
+
+First you'll need to set up an NCBI account, this is associated with your ORCID also. Once you've set that up, you can go to the submission portal. Under the submission portal, you can go to my submission and start a new one under short read archive (SRA). Most of the steps are pretty clear to go through, but the hard parts are the spreadsheets that go with each bit of data.
+
+You'll need to make a spreadsheet with information on all of the samples and then on all the sequence data files you're uploading.
+
+The first is the Model.Organism.Animal.10 spreadsheet. There are some instructions about what information is required, but I'm gonna give a little sample of the data that I included. You'll notice I removed a lot of the unnecessary columns.
+
+```{r}
+sample.info <- read.csv("model.organism.animal.10.csv")
+head(sample.info)
+```
+
+The next file is the SRA_metadata which has information about all the files you're uploading.
+
+```{r}
+file.data <- read.csv("SRA_metadata.csv")
+head(file.data)
+```
+
+
+
+
+
+
+
+
+
