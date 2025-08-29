@@ -120,4 +120,7 @@ trimmomatic PE -threads 4 Z"$sample"_CK...fq Z"$sample"_CK..._fq  \
   SLIDINGWINDOW:4:20 LEADING:3 TRAILING:3 MINLEN:36
 ```
 
-
+## Mapping and Removing Duplicates
+## Coverage
+## Calling Genotypes
+## Filtering
