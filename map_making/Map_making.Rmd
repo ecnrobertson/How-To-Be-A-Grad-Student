@@ -24,7 +24,7 @@ Alright, so you've found an awesome spatial file, lets say for elevation, that y
 ```{r}
 library(raster)
 #this is a file I downloaded from AdaptWest.
-elev <- raster("elevation.tif")
+elev <- raster("data/elevation.tif")
 #first thing I always do is plot the spatial file using base R, I avoid using ggplot for this because it doesn't handle higher resolution stuff as well
 plot(elev)
 ```
@@ -76,12 +76,12 @@ So for me, this was 22GB of data! Ouch. I'm not uploading the actual data up to 
 #Downloading .tifs off of USGS website and merging them together
 
 #first let's see what just one of these files is like
-test_raster <- raster("USGS_TIFF/USGS_13_n36w105_20220801.tif")
+test_raster <- raster("data/USGS_TIFF/USGS_13_n36w105_20220801.tif")
 plot(test_raster)
 #such good resolution!!
 
 #now, we're going to read in all of the files together. This is made easier by the uniform naming scheme... first, making a list of all the file names
-file_list <- list.files(path="USGS_TIFF/", pattern="*.tif", all.files=TRUE, full.names=TRUE)
+file_list <- list.files(path="data/USGS_TIFF/", pattern="*.tif", all.files=TRUE, full.names=TRUE)
 #then using a lapply (which is kind of like a for loop) so apply the same function to every file in the list
 allrasters <- lapply(file_list, raster)
 #test plot to make sure that worked, just plotting the same file as above
@@ -111,16 +111,50 @@ for (i in seq_along(file_list)) {
 merged <- do.call(merge, allrasters)
 plot(merged)
 #go ahead and write this out as a new raster. This way you can deleted all the smaller files and save a little space.
-writeRaster(merged, "raw_BCRF_working_area_elev.tif")
+writeRaster(merged, "data/raw_BCRF_working_area_elev.tif")
 
 #you can also reproject and aggregate this again, whatever you need to do to make it work with other projects!
 elev <- terra::project(merged, y="+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0")
 elev.ag <- aggregate(elev, 10)
 
-writeRaster(elev,"raw_working_area_elev.tif", overwrite=TRUE)
-
-
+writeRaster(elev,"data/raw_working_area_elev.tif", overwrite=TRUE)
 ```
+
+
+
+
+
+
+
+## getting eBird range data
+So you can download all this information from eBird status and trends page. For example, here's the page for Bank Swallow: https://science.ebird.org/en/status-and-trends/species/banswa/trends-map
+
+Under downloads I would usually grab the mean abundance raster (.tif file) for whichever season you're interested in. You can also grab the range geospatial data, but I'm not as familiar with working with that file type so I'll let Holden add in tidbits about that.
+
+Let's go through the process for my Brown-capped Rosy Finches. I'll go ahead and download the mean abundance .tif file.
+https://science.ebird.org/en/status-and-trends/species/bcrfin/downloads?week=1
+
+```{r}
+br <- raster("data/bcrfin_abundance_seasonal_breeding_mean_2023.tif")
+plot(br)
+```
+So, as you can tell from this plot, there's a lot on this raster that I don't need at all. Actually, I just need the data for Colorado and part of Wyoming. There's a couple ways to handle this, so I'll demo two of them. Another option I won't show is just guessing what the extent is an cropping it down to that level, but that's a bit tedious.
+
+```{r}
+library(rnaturalearth)
+
+elev <- raster("data/CO_WY_elev.tif")
+us_states <- ne_states(country = "United States of America", returnclass = "sf")
+BCRF.states <- us_states[us_states$name %in% c("Colorado", "Wyoming"), ]
+plot(BCRF.states$geometry)
+
+br.crop <- crop(br, BCRF.states)
+plot(br.crop)
+```
+
+
+
+
 
 
 
