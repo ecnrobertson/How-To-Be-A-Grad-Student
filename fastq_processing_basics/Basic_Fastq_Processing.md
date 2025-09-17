@@ -32,23 +32,7 @@ Another option for submitting jobs is through an array. <insert details here>
 ## File Structure
 The file structure is going to be different for you, probably, but the file structure I use goes like this.
 
-Project Directory
-|- *analysis*
-  |-*01.fastq_processing*
-    |-01.trim_merge.sbatch
-    |-02.map_rmdup.sbatch
-    |-03.coverage.sbatch
-    |-04.call_genotypes.sbatch
-    |-05.filtering.sbatch
-    |-*raw_data*
-      |-{sample}_R1.fastq
-      |-{sample}_R2.fastq
-    |-*trim_merge*
-      |-{sample}.merged.fq.gz
-    |-*bwa_mem*
-      |-{sample}_rmdup.bam
-    |-*vcf*
-      |-{sample}.vcf
+<pre> ```text Project Directory ├── analysis │ └── 01.fastq_processing │ ├── 01.trim_merge.sbatch │ ├── 02.map_rmdup.sbatch │ ├── 03.coverage.sbatch │ ├── 04.call_genotypes.sbatch │ ├── 05.filtering.sbatch │ ├── raw_data │ │ ├── {sample}_R1.fastq │ │ └── {sample}_R2.fastq │ ├── trim_merge │ │ └── {sample}.merged.fq.gz │ ├── bwa_mem │ │ └── {sample}_rmdup.bam │ └── vcf │ └── {sample}.vcf ``` </pre>
 
 ## Steps and Overview
 1.trim_merge.sbatch
