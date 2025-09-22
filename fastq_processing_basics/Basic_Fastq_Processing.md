@@ -39,18 +39,29 @@ Project Directory
     |-01.trim_merge.sbatch
     |-02.map_rmdup.sbatch
     |-03.coverage.sbatch
-    |-04.call_genotypes.sbatch
+    |-04a.call_genotypes.sbatch
+    |-04b.call_genotypes.sbatch
     |-05.filtering.sbatch
     |-*raw_data*
       |-{sample}_R1.fastq
       |-{sample}_R2.fastq
-    |-*trim_merge*
-      |-{sample}.merged.fq.gz
+      |-{sample}_1.trimmed.fastq
+      |-{sample}_2.trimmed.fastq
     |-*bwa_mem*
       |-{sample}_rmdup.bam
+    |-*cov*
+      |-covSummary.bedtools.txt
     |-*vcf*
       |-{sample}.vcf
-</pre>
+|- *resources*
+  |-*reference*
+    |-genome.fasta
+  |-*adapters*
+    |-TruSeq3-PE-2.fa:2:30:10
+</pre>   
+  
+
+## Setting up a Conda Environment
 
 ## Steps and Overview
 1.trim_merge.sbatch
@@ -107,12 +118,17 @@ conda activate bioinf
 #this is grabbing the sample information that you provided with the for loop
 sample=$1
 
+#make the output directory, this will only make it if it doesn't already exist
+mkdir -p ../trim_merge
+#set the out path to this directory
+OUT="../trim_merge"
+
 #here's you trimmomatic function
 #first you start by giving it the input files. the "$sample" will be replaces with the variable value. Replace this to match your file names.
 trimmomatic PE -threads 4 Z"$sample"_CK...fq Z"$sample"_CK..._fq  \
 #then we're gonna give it the output files names we want, one for both the R1 and the R2 reads
-  "$sample"_1.trimmed.fastq "$sample"_1un.trimmed.fastq \
-  "$sample"_2.trimmed.fastq "$sample"_2un.trimmed.fastq \
+  "$sample"_1.trimmed.fastq $OUT/"$sample"_1un.trimmed.fastq \
+  "$sample"_2.trimmed.fastq $OUT/"$sample"_2un.trimmed.fastq \
 #this gives it information on what adaptors to looks for. I think there are defaults for this but you can also download and provide the adaptor sequences directly, as I've done here.
   ILLUMINACLIP:../../resources/adapters/TruSeq3-PE-2.fa:2:30:10 \
 #then some parameters for how it will identify and trim things
@@ -120,6 +136,309 @@ trimmomatic PE -threads 4 Z"$sample"_CK...fq Z"$sample"_CK..._fq  \
 ```
 
 ## Mapping and Removing Duplicates
+PreStep:
+Indexing the reference genome, only need to do this once so removing from the script
+```{bash, label="index_reference"}
+cd ../../resources/reference
+conda activate bioinf
+#create index for the reference genome, this allows the tools later to use the reference
+bwa index  genome.fasta
+samtools faidx genome.fasta
+```
+
+```{bash, label="02.map_rmdup.sbatch}
+#!/bin/bash
+#SBATCH --job-name=BWA_Dup
+#SBATCH --output=BWA-Dup.%j.out
+#SBATCH --error=BWA_Dup.%j.err
+#################
+#SBATCH -t 24:00:00
+#SBATCH --partition=amilan
+#SBATCH --qos=normal
+#SBATCH --ntasks-per-node 4
+#SBATCH --mem=16G
+#################
+#SBATCH --mail-type=END
+#SBATCH  --mail-user=ericacnr@colostate.edu
+##################
+#echo commands to stdout
+set -x
+
+#from within trim_merge
+#for sample in `ls *1.trimmed.fastq | cut -f1 -d'_'`; do echo $sample; sbatch ../02.map_rmdup.sbatch $sample; done
+
+source ~/.bashrc
+conda activate bioinf
+
+sample=$1
+
+#1. Set up sample name and environment
+##Plate number and directory for bamUtil. Note, plate is the order the plate was sequenced. 
+PLATE="Plate1"
+sample=$1
+lane=L7
+ID="$PLATE.$sample"
+REFERENCE="../../resources/reference/genome.fasta"
+
+cd ../../../01.fastq_processing/trim_merge
+#make the output directory
+mkdir -p ../bwa_mem
+OUT="../bwa_mem"
+
+#2. Align reads to reference genome
+##Align each sample to genome. This is mapping.
+bwa mem  -t 4 $REFERENCE "$sample"_1.trimmed.fastq  \
+	"$sample"_2.trimmed.fastq > $OUT/aln_"$sample".sam 2> $OUT/aln_"$sample".error 
+
+#move into the output folder
+cd $OUT
+
+#3. Convert and sort alignments
+##sort the .bam file
+samtools sort -o aln_"$sample".bam aln_"$sample".sam
+
+#4. Add read group information (metadata)
+##adjust the RGPL based on what you're actually using
+picard AddOrReplaceReadGroups INPUT=aln_"$sample".bam RGID="$ID" RGLB="$PLATE" RGPL=illumina.HGLGKDSX7 RGPU="$PLATE"."$sample" \
+RGSM="$sample" OUTPUT="$sample"_RG.bam VALIDATION_STRINGENCY=SILENT
+
+#removing extra files to save space
+rm aln_"$sample".*
+
+#5. Remove PCR duplicates
+##sort by name, not position (-n)
+samtools sort -n -o "$sample"_namesort.bam "$sample"_RG.bam
+
+##Add mate score tags for samtools markdup to select best reads
+samtools fixmate -m "$sample"_namesort.bam "$sample"_fixm.bam
+rm "$sample"_namesort.bam
+rm "$sample"_RG.bam
+
+##Sort again by position
+samtools sort -o "$sample"_fixm.sort.bam  "$sample"_fixm.bam
+rm "$sample"_fixm.bam
+
+##Markdups
+samtools markdup "$sample"_fixm.sort.bam "$sample"_mkdup.bam
+samtools index "$sample"_mkdup.RG.bam
+```
 ## Coverage
-## Calling Genotypes
-## Filtering
+Two ways to do this. This is a very memory intensive thing to do, so you need to break it up into smaller sets. You can either do that by running it on sets of 10ish bams at a time or as an array with each bam as a separate job. You can also do the array method just for the ones that fail with the first approach.
+
+This is doing it in groups:
+```{bash, label="03.coverage.sbatch"}
+#!/bin/bash
+#
+#SBATCH --job-name=COV
+#SBATCH --output=COV.%A_%a.out
+#SBATCH --error=COV.%A_%a.err
+#################
+#SBATCH -t 24:00:00
+#SBATCH --partition=amilan
+#SBATCH --qos=normal
+#SBATCH --ntasks-per-node 1
+#SBATCH --mem=4G
+#################
+#SBATCH --mail-type=FAIL
+#SBATCH  --mail-user=ericacnr@colostate.edu
+##################
+#echo commands to stdout
+set -x
+##################
+source ~/.bashrc
+conda activate bioinf
+
+#running from the head directory 01.fastq_processing
+IN="../bwa_mem"
+
+#make the coverage directory and move into it
+mkdir -p cov
+cd cov
+
+#this is going to only call a subset of the bams, so you have to go in and change this when you run the next job to move onto the next subset
+for sample in `ls $IN/23N0042*_mkdup.RG.bam` ##you don't need to choose one sample, but you do need to choose 10 or less in the ls function
+do
+        bedtools genomecov -d -ibam $sample > "$sample"_cov.bedtools.txt
+        awk '{if($3<500) {total+=$3; ++lines}} END {print FILENAME," ",total/lines}' "$sample"_cov.bedtools.txt >> covSummary.bedtools.txt
+	rm cov/"$sample"_cov.bedtools.txt
+done
+
+```
+
+This is doing it as an array. An array is....
+
+Easy way to make the .bam list:
+```{bash}
+#from withing bwa_mem
+ls *_mkdup.bam > bamlist.txt
+```
+
+```{bash, label="03.coverage.sbatch"}
+#!/bin/bash
+#
+#SBATCH --job-name=COV
+#SBATCH --output=COV.%A_%a.out
+#SBATCH --error=COV.%A_%a.err
+#################
+#SBATCH -t 24:00:00
+#SBATCH --partition=amilan
+#SBATCH --qos=normal
+#SBATCH --ntasks-per-node 1
+#SBATCH --mem=4G
+#################
+#SBATCH --mail-type=FAIL
+#SBATCH  --mail-user=ericacnr@colostate.edu
+#################
+#SBATCH --array=1-#number of files you have
+##################
+#echo commands to stdout
+set -x
+##################
+#run sbatch in for loop
+
+source ~/.bashrc
+conda activate bioinf
+
+# running from within coverage folder
+IN="../bwa_mem"
+
+# make the coverage directory and move into it
+mkdir -p ../cov
+cd ../cov
+
+# grab bam path from list
+bam=$(awk -v N=$SLURM_ARRAY_TASK_ID 'NR == N {print $1}' $IN/bamlist.txt)
+
+# strip suffix to get sample name
+sample=$(basename "$bam" _mkdup.RG.bam)
+
+# Temporary coverage output
+cov_tmp="${sample}_cov.bedtools.txt"
+
+# Final summary file
+summary="covSummary.bedtools.txt"
+
+# Compute per-base depth and mean coverage < 500x
+bedtools genomecov -d -ibam "$bam" > "$cov_tmp"
+
+# Append average coverage to summary
+awk -v s="$sample" '{if($3<500){total+=$3;++lines}} END{if(lines>0){print s, total/lines} else {print s, "NA"}}' "$cov_tmp" >> "$summary"
+
+# Clean up temporary file
+rm "$cov_tmp"
+```
+
+## Calling Genotypes: GVCF
+We're going to be using GATK, which only works when you have decent coverage. For lower coverage you'd use ANDSG, which I'll go over later.
+
+The first step of this process is to create the gvcf files. For this we need a "comms" file.
+
+```{bash}
+##To prepare the comm_lines.txt file, choose one bam file; replace "$sample" with a specific sample name
+samtools view -H bwa_mem/"$sample"_mkdup.RG.bam | sed 's/SN://g; s/LN://g' | awk '/^@SQ/' | awk -f assemble-scaffold-lists.awk > vcf/comm_lines.txt
+```
+
+```{bash, label="04a.call_genotypes.sbatch"}
+#!/bin/bash
+#
+#SBATCH --job-name=gvcf
+#SBATCH --output=gvcf.%j.out
+#SBATCH --error=gvcf.%j.err
+#################
+#SBATCH -t 8:00:00
+#SBATCH -p amilan
+#SBATCH --qos=normal
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node 10
+#SBATCH --mem=37G
+#################
+#SBATCH --mail-type=END
+#SBATCH  --mail-user=ericacnr@colostate.edu
+#################
+#echo commands to stdout
+set -x
+
+source ~/.bashrc
+
+#from inside the bwa_mem folder
+##for sample in `ls *.bam|cut -f 1 -d "_"|head -1`; do sbatch ../04a.call_genotypes.sbatch $sample; done
+
+sample=$1
+
+##Location of fasta file and 
+FASTA="resources/reference/genome.fasta"
+
+cd vcf
+IN="../bwa_mem"
+
+#CONDA
+#conda activate gatk
+#if using jar file, the path is going to be specific to our you set up your conda environment
+#java -Djava.io.tmpdir=/scratch/alpine/foxhol@colostate.edu/tmp -Xmx96g -jar /curc/sw/install/bio/gatk/4.3.0.0/gatk-package-4.3.0.0-local.jar HaplotypeCaller \
+#       	-I  LOSH.x5.0_all.bam \
+#       	--sample-name ${sample} \
+#       	-R $FASTA \
+#       	--emit-ref-confidence GVCF \
+#       	-O raw_genotypes_HC/${sample}.raw.snps.indels.g.vcf
+
+#make output file
+
+mkdir -p ../raw_genotypes_HC
+
+#MODULE
+#if using gatk as module but need to specify space
+module load gatk
+gatk --java-options "-Djava.io.tmpdir=/scratch/alpine/ericacnr@colostate.edu/tmp" --java-options "-Xmx37g" HaplotypeCaller \
+	-I  $IN/"$sample"_mkdup.RG.bam \
+	--sample-name ${sample} \
+	-R $FASTA \
+	--emit-ref-confidence GVCF \
+	-O raw_genotypes_HC/${sample}.raw.snps.indels.g.vcf
+```
+
+```{bash, label="04b.call_genotypes.sbatch"}
+#!/bin/bash 
+#
+#SBATCH --job-name=genomedb
+#SBATCH --output=genomedb.%j.out
+#SBATCH --error=genomedb.%j.err
+#################
+#SBATCH -t 24:00:00
+#SBATCH -p amilan
+#SBATCH --qos=normal
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node 10
+#SBATCH --mem=37G
+#################
+#SBATCH --array=1-1
+#################
+#SBATCH --mail-type=END,FAIL
+#SBATCH  --mail-user=ericacnr@colostate.edu
+#################
+#echo commands to stdout
+set -x
+
+source ~/.bashrc
+conda activate bioinf
+
+#running from the head directory 01.fastq_processing
+FASTA="resources/reference/genome.fasta"
+GVCF="vcf/raw_genotypes_HC"
+COMMS="vcf/comm_lines.txt"
+
+OUTN=$(printf '%04d' $SLURM_ARRAY_TASK_ID)
+OUT=$OUTN
+
+SEG=$(awk -F"\t" -v n=$SLURM_ARRAY_TASK_ID 'NR == n {print $2}' $COMMS)
+
+## Consolidate all GVCF files
+#This step consists of consolidating the contents of GVCF files across all of your samples in order to improve scalability and speed the next step, joint genotyping. We will use the GenomicsDBImport tool and will need to make a new temporary directory.
+
+mkdir -p vcf/called_genotypes_HC
+module load gatk
+gatk --java-options "-Djava.io.tmpdir=/scratch/alpine/ericacnr@colostate.edu/tmp -Xmx37g" GenomicsDBImport \
+   $(printf ' --variant %s ' $GVCF/*g.vcf) \
+     --genomicsdb-workspace-path called_genotypes_HC/${SLURM_TASK_ID}_gcrf_database \
+      -L $SEG > $OUT.stdout 2>$OUT.stderr
+```
+##Filtering
