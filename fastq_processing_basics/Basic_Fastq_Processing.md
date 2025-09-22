@@ -32,7 +32,7 @@ Another option for submitting jobs is through an array. <insert details here>
 ## File Structure
 The file structure is going to be different for you, probably, but the file structure I use goes like this.
 
-<pre>```
+<pre>
 Project Directory
 |- *analysis*
   |-*01.fastq_processing*
@@ -50,7 +50,7 @@ Project Directory
       |-{sample}_rmdup.bam
     |-*vcf*
       |-{sample}.vcf
-```</pre>
+</pre>
 
 ## Steps and Overview
 1.trim_merge.sbatch
