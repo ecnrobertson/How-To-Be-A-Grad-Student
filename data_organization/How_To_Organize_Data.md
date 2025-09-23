@@ -120,6 +120,7 @@ The first three of these are taken directly from examples provided by <https://m
 
 ## Almost Flat (super simple)
 
+```{=html}
 <pre>
 
 PROJECT/
@@ -151,8 +152,11 @@ PROJECT/
 └── weatherStation_MITGreenBuilding_2019_07_07.csv
 
 </pre>
+```
 
 ## A Simple Hierarchy
+
+```{=html}
 <pre>
 PROJECT/
 ├── bin/            <- compiled binaries. 
@@ -163,7 +167,7 @@ PROJECT/
 ├── figures/        <- figures used in place of a "results" folder. 
 ├── scripts/
 │   ├── process/    <- scripts to maniuplate data between raw, cleaned, final stages.
-│   └── plot/	      <- intermediate plotting.
+│   └── plot/         <- intermediate plotting.
 │
 ├── src
 │   ├── model1/     <- various experimental models.
@@ -174,9 +178,11 @@ PROJECT/
 ├── Makefile
 └── readme.md
 </pre>
+```
 
 ## A Complex Hierarchy
 
+```{=html}
 <pre>
 PROJECT/
 ├── LICENSE
@@ -224,9 +230,11 @@ PROJECT/
 │
 └── tox.ini            <- tox file with settings for running tox; see tox.testrun.org
 </pre>
+```
 
 ## What I Do
 
+```{=html}
 <pre>
 Chapter_2/
 ├── README.md          <- README with information about the project and the file structure, maybe even an overview of the methods of workflow
@@ -248,3 +256,12 @@ Chapter_2/
 │   ├── ME/       <- manuscript files and figures and cover letter that are going to Molecular Ecology
 │   └── SRA_submission/   <- this is where I put all of the files that are compiled for the SRA submission process
 </pre>
+```
+
+# Citations and Additional Resources
+A lot of this is summarized/ inspired by this mit resource:
+https://mitcommlab.mit.edu/broad/commkit/file-structure/
+Additional things to check out:
+https://pmc.ncbi.nlm.nih.gov/articles/PMC2709440/
+https://jhudatascience.org/Reproducibility_in_Cancer_Informatics/organizing-your-project.html
+

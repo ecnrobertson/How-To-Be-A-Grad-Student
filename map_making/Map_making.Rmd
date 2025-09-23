@@ -142,13 +142,14 @@ So, as you can tell from this plot, there's a lot on this raster that I don't ne
 
 ```{r}
 library(rnaturalearth)
+library(dplyr)
 
 elev <- raster("data/CO_WY_elev.tif")
 us_states <- ne_states(country = "United States of America", returnclass = "sf")
 BCRF.states <- us_states[us_states$name %in% c("Colorado", "Wyoming"), ]
 plot(BCRF.states$geometry)
 
-br.crop <- crop(br, BCRF.states)
+br.crop <- mask(br, BCRF.states)
 plot(br.crop)
 ```
 

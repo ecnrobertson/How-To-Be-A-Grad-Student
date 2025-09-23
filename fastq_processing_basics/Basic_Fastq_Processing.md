@@ -8,6 +8,9 @@ output: html_document
 # INTRODUCTION
 So this will be a walk through of a pipeline for processing sequence data. This is a very basic pipline that should work with most WGS sequence data. These scripts are adapted and streamlined from scripts that Christen Bossu wrote and shared with me during my second year of my PhD.
 
+Also, a nice summary of file types, including the ones we're generating and dealing with in this workflow, can be found here:
+https://www.formbio.com/blog/your-essential-guide-different-file-formats-bioinformatics
+
 ## Setting the stage
 So, each of these scripts is numbered based on the order in which they are run. These are all designed to be run on the cluster. I also assume that you have a conda environment set up with all these programs. Although on clusters like alpine you have the option of using built in modules, these are often limited and it's a better habit to use conda or mamba environments anyway. My conda environment for all these programs is called bioinf, so you'll see me activating that at the beginning of each script. Additionally, each script includes the necessary SBATCH information so that it can be submitted and run correctly. I will include time and memory details, but take these with a grain of salt. Often, I've requested much more than I need. This is partly because I didn't know better (and didn't adjust once learning what the job actually needed) and partly because it sucks when a job times out or fails from lack of memory. Requesting more resources often means the job will take longer to start, so there's pros and cons. Fiddle with these as needed!
 
