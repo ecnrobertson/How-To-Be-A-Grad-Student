@@ -124,19 +124,19 @@ The first three of these are taken directly from examples provided by <https://m
 
 PROJECT/
 
-├── figures/ \<- plots.m saves figures in here
+├── figures/                                          <- plots.m saves figures in here
 
-├── main.m \<- does something fancy, calls plots.m
+├── main.m                                            <- does something fancy, calls plots.m
 
-├── plots.m \<- make presentation figures
+├── plots.m                                           <- make presentation figures
 
-├── raw2wind.m \<- script to clean .csv data to .mat
+├── raw2wind.m                                        <- script to clean .csv data to .mat
 
 ├── readme.txt
 
-├── windSpeed_MITGreenBuilding.mat \<- cleaned data
+├── windSpeed_MITGreenBuilding.mat                    <- cleaned data
 
-├── weatherStation_MITGreenBuilding_2019_07_01.csv \<- raw data
+├── weatherStation_MITGreenBuilding_2019_07_01.csv    <- raw data
 
 ├── weatherStation_MITGreenBuilding_2019_07_02.csv
 
@@ -150,4 +150,101 @@ PROJECT/
 
 └── weatherStation_MITGreenBuilding_2019_07_07.csv
 
+</pre>
+
+## A Simple Hierarchy
+<pre>
+PROJECT/
+├── bin/            <- compiled binaries. 
+├── data/ 
+│   ├── raw/
+│   └── clean/
+│
+├── figures/        <- figures used in place of a "results" folder. 
+├── scripts/
+│   ├── process/    <- scripts to maniuplate data between raw, cleaned, final stages.
+│   └── plot/	      <- intermediate plotting.
+│
+├── src
+│   ├── model1/     <- various experimental models.
+│   ├── model2/
+│   └── model3/
+│
+├── LICENSE
+├── Makefile
+└── readme.md
+</pre>
+
+## A Complex Hierarchy
+
+<pre>
+PROJECT/
+├── LICENSE
+├── Makefile           <- Makefile with commands like `make data` or `make train`
+├── README.md          <- The top-level README for developers using this project.
+├── data/
+│   ├── external/      <- Data from third party sources.
+│   ├── interim/       <- Intermediate data that has been transformed.
+│   ├── processed/     <- The final, canonical data sets for modeling.
+│   └── raw/           <- The original, immutable data dump.
+│
+├── docs/              <- A default Sphinx project; see sphinx-doc.org for details
+│
+├── models/            <- Trained and serialized models, model predictions, or model summaries
+│
+├── notebooks/         <- Jupyter notebooks. Naming convention is a number (for ordering),
+│                         the creator's initials, and a short `-` delimited description, e.g.
+│                         `1.0-jqp-initial-data-exploration`.
+│
+├── references/        <- Data dictionaries, manuals, and all other explanatory materials.
+│
+├── reports/           <- Generated analysis as HTML, PDF, LaTeX, etc.
+│   └── figures/       <- Generated graphics and figures to be used in reporting
+│
+├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
+│                         generated with `pip freeze > requirements.txt`
+│
+├── setup.py           <- Make this project pip installable with `pip install -e`
+├── src/               <- Source code for use in this project.
+│   ├── __init__.py    <- Makes src a Python module
+│   │
+│   ├── data/          <- Scripts to download or generate data
+│   │   └── make_dataset.py
+│   │
+│   ├── features/      <- Scripts to turn raw data into features for modeling
+│   │   └── build_features.py
+│   │
+│   ├── models/        <- Scripts to train models and then use trained models to make
+│   │   │                 predictions
+│   │   ├── predict_model.py
+│   │   └── train_model.py
+│   │
+│   └── visualization/ <- Scripts to create exploratory and results oriented visualizations
+│       └── visualize.py
+│
+└── tox.ini            <- tox file with settings for running tox; see tox.testrun.org
+</pre>
+
+## What I Do
+
+<pre>
+Chapter_2/
+├── README.md          <- README with information about the project and the file structure, maybe even an overview of the methods of workflow
+├── Project.Rproj      <- This is the R project that organizes everything and is linked to github
+├── data/
+│   ├── sample_data/   <- this is the metadata, morphological data, location data, etc, for my samples
+│   ├── spatial/       <- I often have really large spatial files, I store these separately so I can ignore them and not have them upload to github (they're too big)
+│   └── processes/     <- The original, immutable data dump.
+├── analyses/
+│   ├── 01.fastq_processing/      <- I number these analyses by the order in which they are performed, always starting with 01.
+│   │   ├── 01.fastq_processing.Rmd <- This is the R markdown file that has all my steps, code, notes, etc for this part of the anlaysis, sometimes there's an a and b and c if it's multiple steps
+│   │   └── 01.results/      <- output and results for this analyses, sometimes you might want an "out" and a "results" file if you have lots of intermediate files
+│   ├── 02.imputation/      <- this is actually run on the cluster
+│   │   ├──02.imputation.Rmd <- this is the code and steps, but I don't actually run it here or have the results on my local computer
+│   ├── 03.GEA/
+│   │   ├──03.1.gradient_forest.Rmd   <- sometimes instead of a and b I use 1, 2, and 3... substeps verses separate programs...
+│   │   ├──03.results/
+├── manuscript/
+│   ├── ME/       <- manuscript files and figures and cover letter that are going to Molecular Ecology
+│   ├── SRA_submission/   <- this is where I put all of the files that are compiled for the SRA submission process
 </pre>
