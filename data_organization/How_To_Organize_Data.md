@@ -9,13 +9,13 @@ output: html_document
 
 How to structure project files is a pretty personal thing, but it took me a long time (3 years!) to settle on a good approach. It was something I hadn't thought much about coming into grad school and was complicated by not knowing enough to fully plan out (or even start to guess) what my workflow/methodology was going to look like. Also, it takes extra work and planning and intentional which can be hard to muster. But, that was before I realized the benefits of writing not only reproducible code, but organizing files so that they make sense. Now that I know, I enthusiastically invest time into improving these aspects of my project. So, why should you care?
 
-## ***For You***
+## For You
 
 Consistency between projects and organized code is like having a tidy desk or room where you know where everything is. It's not only going to save time when you inevitably have to go back and figure out what you did but it will also make thinking through the whole process of a project that much easier. A great example of this is my first chapter work.
 
 When I started, I had no real organization system. I had many versions of "GCRF_master", and which one was the "master" was anything but clear. I couldn't keep track of what samples I had efficiently, regularly had embarrassing moments where I couldn't answer simple questions like "what's you sample size?" "what filters did you run?" "can you show me X figure?". You'll impress the heck out of your PI if you can come in from the beginning having everything under control, and it will save you a lot of time and stress. Another part of this is that, most likely, you will have to redo some analyses for your dissertation work. For me, I had to do my Chapter 1 analyses 4 separate times. This is challenging mentally, and made even harder by not being totally sure what you did the first time around and how to reproduce that or improve it. For me, having my code broken down by steps with running notes and details of what I was thinking and what the results meant was a huge step is feeling like I had control over my research and a fully grasp of what my project was about and what I was trying to do. Also, when I had to go to other projects and apply the same packages or needed similar figures, it was so much easier to find where I'd already figured it out and just copy and adjust the code rather than starting from scratch every time!
 
-## ***For Others***
+## For Others
 
 A major goal of a graduate program is to do original research and share those results. A key part of being able to share your results is to also shoot for reproducibility. Organized code is essential for this. You want someone to be able to open up your project and understand exactly what you did, why you made decisions, and how they can do it themselves, and you want this to be an easy process. This is important not only for collaborations, helping others who are trying to run similar analyses, but it's actually often a requirement for publishing. When you submit a manuscript you don't just give them your figures and pdf file of the paper, you also upload the code you used to get the results and all of the files associated with a project. You can save yourself a lot of time, and your reviewers a lot of stress (which might make them less inclined to let you publish!) by keeping your code organized from the beginning.
 
@@ -240,11 +240,11 @@ Chapter_2/
 │   │   ├── 01.fastq_processing.Rmd <- This is the R markdown file that has all my steps, code, notes, etc for this part of the anlaysis, sometimes there's an a and b and c if it's multiple steps
 │   │   └── 01.results/      <- output and results for this analyses, sometimes you might want an "out" and a "results" file if you have lots of intermediate files
 │   ├── 02.imputation/      <- this is actually run on the cluster
-│   │   ├──02.imputation.Rmd <- this is the code and steps, but I don't actually run it here or have the results on my local computer
+│   │   └──02.imputation.Rmd <- this is the code and steps, but I don't actually run it here or have the results on my local computer
 │   ├── 03.GEA/
 │   │   ├──03.1.gradient_forest.Rmd   <- sometimes instead of a and b I use 1, 2, and 3... substeps verses separate programs...
-│   │   ├──03.results/
+│   │   └──03.results/
 ├── manuscript/
 │   ├── ME/       <- manuscript files and figures and cover letter that are going to Molecular Ecology
-│   ├── SRA_submission/   <- this is where I put all of the files that are compiled for the SRA submission process
+│   └── SRA_submission/   <- this is where I put all of the files that are compiled for the SRA submission process
 </pre>
