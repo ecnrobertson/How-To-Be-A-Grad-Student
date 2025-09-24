@@ -9,6 +9,7 @@ This is a little extension of the original map_making.Rmd that has a fun thing I
 ## SOIL GRID DATA
 Accessed from https://soilgrids.org/... clay, coarse fragments, and sand content.
 
+Here's the basic bash code for downloading the clay data...
 ```{bash, label="downloading_clay_data"}
 #!/bin/bash
 
@@ -56,6 +57,7 @@ done
 
 ```
 
+Here's a bit more of a for-loop format in case you want to download lots of different kinds, you just replace the name with the correct data type.
 ```{bash, label="downloading_data"}
 #!/bin/bash
 
@@ -94,6 +96,7 @@ done
 done
 ```
 
+This is reading it into R and processing it so that it's aggregated and writable. This is for the clay data...
 ```{r, label="working_with_clay_data"}
 library(raster)
 test_raster <- raster("data/spatial_files/sand_230m/sand_-110_-100_24_34.tif")
