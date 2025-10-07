@@ -1,0 +1,696 @@
++ source /home/ericacnr@colostate.edu/.bashrc
+++ '[' -f /etc/bashrc ']'
+++ . /etc/bashrc
++++ '[' -z '' ']'
++++ BASHRCSOURCED=Y
++++ '[' '' ']'
++++ shopt -q login_shell
++++ '[' 2006122 -gt 199 ']'
+++++ /usr/bin/id -gn
+++++ /usr/bin/id -un
++++ '[' ericacnrpgrp@colostate.edu = ericacnr@colostate.edu ']'
++++ umask 022
++++ SHELL=/bin/bash
++++ for i in /etc/profile.d/*.sh
++++ '[' -r /etc/profile.d/00-modulepath.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/00-modulepath.sh
+++++ '[' -z /curc/sw/modules/slurm:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core:/curc/sw/alpine-modules/compilers:/curc/sw/alpine-modules/idep:/curc/sw/alpine-modules/udep/bio:/usr/share/lmod/8.7.55/modulefiles/Core:/curc/partners/csu/modules/csu_licensed ']'
+++++ :
++++ for i in /etc/profile.d/*.sh
++++ '[' -r /etc/profile.d/bash_completion.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/bash_completion.sh
+++++ '[' -n '4.4.19(1)-release' -a -n '' -a -z '' ']'
++++ for i in /etc/profile.d/*.sh
++++ '[' -r /etc/profile.d/colorgrep.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/colorgrep.sh
+++++ /usr/libexec/grepconf.sh -c
+++++ alias 'grep=grep --color=auto'
+++++ alias 'egrep=egrep --color=auto'
+++++ alias 'fgrep=fgrep --color=auto'
++++ for i in /etc/profile.d/*.sh
++++ '[' -r /etc/profile.d/colorls.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/colorls.sh
+++++ '[' '!' -t 0 ']'
+++++ return
++++ for i in /etc/profile.d/*.sh
++++ '[' -r /etc/profile.d/colorsysstat.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/colorsysstat.sh
+++++ export S_COLORS=auto
+++++ S_COLORS=auto
++++ for i in /etc/profile.d/*.sh
++++ '[' -r /etc/profile.d/colorxzgrep.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/colorxzgrep.sh
+++++ /usr/libexec/grepconf.sh -c
+++++ alias 'xzgrep=xzgrep --color=auto'
+++++ alias 'xzegrep=xzegrep --color=auto'
+++++ alias 'xzfgrep=xzfgrep --color=auto'
++++ for i in /etc/profile.d/*.sh
++++ '[' -r /etc/profile.d/colorzgrep.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/colorzgrep.sh
+++++ '[' -f /usr/libexec/grepconf.sh ']'
+++++ /usr/libexec/grepconf.sh -c
+++++ alias 'zgrep=zgrep --color=auto'
+++++ alias 'zfgrep=zfgrep --color=auto'
+++++ alias 'zegrep=zegrep --color=auto'
++++ for i in /etc/profile.d/*.sh
++++ '[' -r /etc/profile.d/cvs.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/cvs.sh
+++++ export CVS_RSH=ssh
+++++ CVS_RSH=ssh
++++ for i in /etc/profile.d/*.sh
++++ '[' -r /etc/profile.d/gawk.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/gawk.sh
++++ for i in /etc/profile.d/*.sh
++++ '[' -r /etc/profile.d/gpfs.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/gpfs.sh
+++++ PATH=/usr/lpp/mmfs/bin:/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/projects/ericacnr@colostate.edu/bin:/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/bin:/projects/ericacnr@colostate.edu/mambaforge/condabin:/curc/sw/curc-quota/latest/bin:/curc/slurm/alpine/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2
++++ for i in /etc/profile.d/*.sh
++++ '[' -r /etc/profile.d/lang.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/lang.sh
+++++ '[' -n en_US.UTF-8 ']'
+++++ LANG_backup=en_US.UTF-8
+++++ for config in /etc/locale.conf "${HOME}/.i18n"
+++++ '[' -f /etc/locale.conf ']'
++++++ /usr/bin/sed -r -e 's/^[[:blank:]]*([[:upper:]_]+)=([[:print:][:digit:]\._-]+|"[[:print:][:digit:]\._-]+")/export \1=\2/;t;d' /etc/locale.conf
+++++ eval export 'LANG="en_US.UTF-8"'
++++++ export LANG=en_US.UTF-8
++++++ LANG=en_US.UTF-8
+++++ for config in /etc/locale.conf "${HOME}/.i18n"
+++++ '[' -f /home/ericacnr@colostate.edu/.i18n ']'
+++++ '[' -n en_US.UTF-8 ']'
+++++ LANG=en_US.UTF-8
+++++ unset LANG_backup config
+++++ '[' -n '' ']'
+++++ '[' -n en_US.UTF-8 ']'
+++++ '[' screen = linux ']'
++++ for i in /etc/profile.d/*.sh
++++ '[' -r /etc/profile.d/less.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/less.sh
+++++ '[' -z '||/usr/bin/lesspipe.sh %s' ']'
++++ for i in /etc/profile.d/*.sh
++++ '[' -r /etc/profile.d/lmod.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/lmod.sh
+++++ LMOD_VERSION=8.7.55
+++++ LMOD_PKG=/usr/share/lmod/8.7.55
+++++ LMOD_DIR=/usr/share/lmod/8.7.55/libexec
+++++ LMOD_CMD=/usr/share/lmod/8.7.55/libexec/lmod
+++++ MODULESHOME=/usr/share/lmod/8.7.55
+++++ '[' ericacnr@colostate.edu '!=' root ']'
+++++ export MODULEPATH_ROOT=/curc/sw/alpine-modules
+++++ MODULEPATH_ROOT=/curc/sw/alpine-modules
+++++ export LMOD_PACKAGE_PATH=/curc/sw/alpine-modules/.site
+++++ LMOD_PACKAGE_PATH=/curc/sw/alpine-modules/.site
+++++ export LMOD_AVAIL_STYLE=grouped
+++++ LMOD_AVAIL_STYLE=grouped
+++++ export LMOD_SETTARG_CMD=:
+++++ LMOD_SETTARG_CMD=:
+++++ export LMOD_FULL_SETTARG_SUPPORT=no
+++++ LMOD_FULL_SETTARG_SUPPORT=no
+++++ export LMOD_COLORIZE=yes
+++++ LMOD_COLORIZE=yes
+++++ export LMOD_PREPEND_BLOCK=normal
+++++ LMOD_PREPEND_BLOCK=normal
++++++ /usr/share/lmod/8.7.55/libexec/addto --append MODULEPATH /curc/sw/alpine-modules/compilers
+++++ export MODULEPATH=/curc/sw/modules/slurm:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core:/curc/sw/alpine-modules/idep:/curc/sw/alpine-modules/udep/bio:/usr/share/lmod/8.7.55/modulefiles/Core:/curc/partners/csu/modules/csu_licensed:/curc/sw/alpine-modules/compilers
+++++ MODULEPATH=/curc/sw/modules/slurm:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core:/curc/sw/alpine-modules/idep:/curc/sw/alpine-modules/udep/bio:/usr/share/lmod/8.7.55/modulefiles/Core:/curc/partners/csu/modules/csu_licensed:/curc/sw/alpine-modules/compilers
++++++ /usr/share/lmod/8.7.55/libexec/addto --append MODULEPATH /curc/sw/alpine-modules/idep
+++++ export MODULEPATH=/curc/sw/modules/slurm:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core:/curc/sw/alpine-modules/udep/bio:/usr/share/lmod/8.7.55/modulefiles/Core:/curc/partners/csu/modules/csu_licensed:/curc/sw/alpine-modules/compilers:/curc/sw/alpine-modules/idep
+++++ MODULEPATH=/curc/sw/modules/slurm:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core:/curc/sw/alpine-modules/udep/bio:/usr/share/lmod/8.7.55/modulefiles/Core:/curc/partners/csu/modules/csu_licensed:/curc/sw/alpine-modules/compilers:/curc/sw/alpine-modules/idep
++++++ /usr/share/lmod/8.7.55/libexec/addto --append MODULEPATH /curc/sw/alpine-modules/udep/bio
+++++ export MODULEPATH=/curc/sw/modules/slurm:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core:/usr/share/lmod/8.7.55/modulefiles/Core:/curc/partners/csu/modules/csu_licensed:/curc/sw/alpine-modules/compilers:/curc/sw/alpine-modules/idep:/curc/sw/alpine-modules/udep/bio
+++++ MODULEPATH=/curc/sw/modules/slurm:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core:/usr/share/lmod/8.7.55/modulefiles/Core:/curc/partners/csu/modules/csu_licensed:/curc/sw/alpine-modules/compilers:/curc/sw/alpine-modules/idep:/curc/sw/alpine-modules/udep/bio
++++++ /usr/share/lmod/8.7.55/libexec/addto --append MODULEPATH /usr/share/lmod/8.7.55/modulefiles/Core
+++++ export MODULEPATH=/curc/sw/modules/slurm:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core:/curc/partners/csu/modules/csu_licensed:/curc/sw/alpine-modules/compilers:/curc/sw/alpine-modules/idep:/curc/sw/alpine-modules/udep/bio:/usr/share/lmod/8.7.55/modulefiles/Core
+++++ MODULEPATH=/curc/sw/modules/slurm:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core:/curc/partners/csu/modules/csu_licensed:/curc/sw/alpine-modules/compilers:/curc/sw/alpine-modules/idep:/curc/sw/alpine-modules/udep/bio:/usr/share/lmod/8.7.55/modulefiles/Core
+++++ grep -q '@colostate\.edu$'
+++++ echo ericacnr@colostate.edu
++++++ /usr/share/lmod/8.7.55/libexec/addto --append MODULEPATH /curc/partners/csu/modules/csu_licensed
+++++ export MODULEPATH=/curc/sw/modules/slurm:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core:/curc/sw/alpine-modules/compilers:/curc/sw/alpine-modules/idep:/curc/sw/alpine-modules/udep/bio:/usr/share/lmod/8.7.55/modulefiles/Core:/curc/partners/csu/modules/csu_licensed
+++++ MODULEPATH=/curc/sw/modules/slurm:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core:/curc/sw/alpine-modules/compilers:/curc/sw/alpine-modules/idep:/curc/sw/alpine-modules/udep/bio:/usr/share/lmod/8.7.55/modulefiles/Core:/curc/partners/csu/modules/csu_licensed
+++++ export MODULESHOME=/usr/share/lmod/8.7.55
+++++ MODULESHOME=/usr/share/lmod/8.7.55
+++++ export BASH_ENV=/usr/share/lmod/8.7.55/init/bash
+++++ BASH_ENV=/usr/share/lmod/8.7.55/init/bash
+++++ '[' -z /usr/share/lmod/8.7.55/share/man:/usr/share/lmod/lmod/share/man: ']'
++++++ /usr/share/lmod/8.7.55/libexec/addto MANPATH /usr/share/lmod/8.7.55/share/man
+++++ export MANPATH=/usr/share/lmod/8.7.55/share/man:/usr/share/lmod/lmod/share/man:
+++++ MANPATH=/usr/share/lmod/8.7.55/share/man:/usr/share/lmod/lmod/share/man:
++++++ /bin/ps -p 471932 -ocomm=
+++++ my_shell=slurm_script
++++++ /bin/expr slurm_script : '-*\(.*\)'
+++++ my_shell=slurm_script
++++++ /bin/basename slurm_script
+++++ my_shell=slurm_script
+++++ '[' -f /usr/share/lmod/8.7.55/init/slurm_script ']'
+++++ . /usr/share/lmod/8.7.55/init/sh
++++++ LMOD_ROOT=/usr/share/lmod
++++++ LMOD_PKG=/usr/share/lmod/lmod
++++++ LMOD_DIR=/usr/share/lmod/lmod/libexec
++++++ LMOD_CMD=/usr/share/lmod/lmod/libexec/lmod
++++++ MODULESHOME=/usr/share/lmod/lmod
++++++ export LMOD_CMD
++++++ export LMOD_PKG
++++++ export LMOD_DIR
++++++ export MODULESHOME
+++++ unset my_shell
++++ for i in /etc/profile.d/*.sh
++++ '[' -r /etc/profile.d/modules.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/modules.sh
+++++ . /etc/profile.d/00-modulepath.sh
++++++ '[' -z /curc/sw/modules/slurm:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core:/curc/sw/alpine-modules/compilers:/curc/sw/alpine-modules/idep:/curc/sw/alpine-modules/udep/bio:/usr/share/lmod/8.7.55/modulefiles/Core:/curc/partners/csu/modules/csu_licensed ']'
++++++ :
+++++ '[' -z '' ']'
+++++ LMOD_ALLOW_ROOT_USE=yes
+++++ '[' -n '' ']'
+++++ '[' yes '!=' yes ']'
+++++ '[' -z /curc/sw/alpine-modules ']'
+++++ findExec READLINK_CMD /usr/bin/readlink readlink
+++++ Nm=READLINK_CMD
+++++ confPath=/usr/bin/readlink
+++++ execNm=readlink
+++++ eval READLINK_CMD=/usr/bin/readlink
++++++ READLINK_CMD=/usr/bin/readlink
+++++ '[' '!' -x /usr/bin/readlink ']'
+++++ unset Nm confPath execNm
+++++ findExec PS_CMD /usr/bin/ps ps
+++++ Nm=PS_CMD
+++++ confPath=/usr/bin/ps
+++++ execNm=ps
+++++ eval PS_CMD=/usr/bin/ps
++++++ PS_CMD=/usr/bin/ps
+++++ '[' '!' -x /usr/bin/ps ']'
+++++ unset Nm confPath execNm
+++++ findExec EXPR_CMD /usr/bin/expr expr
+++++ Nm=EXPR_CMD
+++++ confPath=/usr/bin/expr
+++++ execNm=expr
+++++ eval EXPR_CMD=/usr/bin/expr
++++++ EXPR_CMD=/usr/bin/expr
+++++ '[' '!' -x /usr/bin/expr ']'
+++++ unset Nm confPath execNm
+++++ findExec BASENAME_CMD /usr/bin/basename basename
+++++ Nm=BASENAME_CMD
+++++ confPath=/usr/bin/basename
+++++ execNm=basename
+++++ eval BASENAME_CMD=/usr/bin/basename
++++++ BASENAME_CMD=/usr/bin/basename
+++++ '[' '!' -x /usr/bin/basename ']'
+++++ unset Nm confPath execNm
+++++ unset -f findExec
+++++ '[' -f /proc/471932/exe ']'
++++++ /usr/bin/readlink /proc/471932/exe
+++++ my_shell=/usr/bin/bash
++++++ /usr/bin/expr /usr/bin/bash : '-*\(.*\)'
+++++ my_shell=/usr/bin/bash
++++++ /usr/bin/basename /usr/bin/bash
+++++ my_shell=bash
+++++ case ${my_shell} in
+++++ '[' -f /usr/share/lmod/lmod/init/bash ']'
+++++ . /usr/share/lmod/lmod/init/bash
++++++ '[' -z '' ']'
++++++ case "$-" in
++++++ __lmod_vx=x
++++++ '[' -n x ']'
++++++ set +x
+Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for this output (/usr/share/lmod/lmod/init/bash)
+Shell debugging restarted
++++++ unset __lmod_vx
+++++ unset my_shell PS_CMD EXPR_CMD BASENAME_CMD MODULEPATH_INIT LMOD_ALLOW_ROOT_USE READLINK_CMD
++++ for i in /etc/profile.d/*.sh
++++ '[' -r /etc/profile.d/prompt.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/prompt.sh
+++++ '[' '' ']'
++++ for i in /etc/profile.d/*.sh
++++ '[' -r /etc/profile.d/ssh-x-forwarding.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/ssh-x-forwarding.sh
+++++ '[' -z '129.82.95.78 12496 198.59.51.18 22' ']'
+++++ '[' -z '' ']'
+++++ return
++++ for i in /etc/profile.d/*.sh
++++ '[' -r /etc/profile.d/vim.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/vim.sh
+++++ '[' -n '4.4.19(1)-release' -o -n '' -o -n '' ']'
++++++ /usr/bin/id -u
+++++ '[' 2006122 -le 200 ']'
+++++ alias vi
+++++ alias vi=vim
++++ for i in /etc/profile.d/*.sh
++++ '[' -r /etc/profile.d/vnc.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/vnc.sh
+++++ PATH=/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/projects/ericacnr@colostate.edu/bin:/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/bin:/projects/ericacnr@colostate.edu/mambaforge/condabin:/curc/sw/curc-quota/latest/bin:/curc/slurm/alpine/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2
++++ for i in /etc/profile.d/*.sh
++++ '[' -r /etc/profile.d/vte.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/vte.sh
+++++ '[' -n '4.4.19(1)-release' -o -n '' ']'
+++++ [[ hxB == *i* ]]
+++++ return 0
++++ for i in /etc/profile.d/*.sh
++++ '[' -r /etc/profile.d/which2.sh ']'
++++ '[' '' ']'
++++ . /etc/profile.d/which2.sh
+++++ '[' /var/spool/slurmd/job18065359/slurm_script = ksh ']'
+++++ '[' /var/spool/slurmd/job18065359/slurm_script = -ksh ']'
+++++ alias 'which=(alias; declare -f) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot'
++++ unset i
++++ unset -f pathmunge
++++ export SCRATCHDIR=/scratch/alpine
++++ SCRATCHDIR=/scratch/alpine
++++ export APPTAINER_TMPDIR=/scratch/alpine/ericacnr@colostate.edu
++++ APPTAINER_TMPDIR=/scratch/alpine/ericacnr@colostate.edu
++++ export APPTAINER_CACHEDIR=/scratch/alpine/ericacnr@colostate.edu/apptainer_cache
++++ APPTAINER_CACHEDIR=/scratch/alpine/ericacnr@colostate.edu/apptainer_cache
++++ export CURC_CONTAINER_DIR=/curc/sw/containers
++++ CURC_CONTAINER_DIR=/curc/sw/containers
++++ export CURC_CONTAINER_DIR_OOD=/curc/sw/containers/open_ondemand
++++ CURC_CONTAINER_DIR_OOD=/curc/sw/containers/open_ondemand
++++ export CURC_LLM_DIR=/gpfs/alpine1/llms
++++ CURC_LLM_DIR=/gpfs/alpine1/llms
+++ PS1='[\h: \W]$ '
+++ export PATH=/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/projects/ericacnr@colostate.edu/bin:/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/bin:/projects/ericacnr@colostate.edu/mambaforge/condabin:/curc/sw/curc-quota/latest/bin:/curc/slurm/alpine/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64
+++ PATH=/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/projects/ericacnr@colostate.edu/bin:/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/bin:/projects/ericacnr@colostate.edu/mambaforge/condabin:/curc/sw/curc-quota/latest/bin:/curc/slurm/alpine/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64
+++ export PATH=/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/projects/ericacnr@colostate.edu/bin:/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/bin:/projects/ericacnr@colostate.edu/mambaforge/condabin:/curc/sw/curc-quota/latest/bin:/curc/slurm/alpine/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS
+++ PATH=/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/projects/ericacnr@colostate.edu/bin:/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/bin:/projects/ericacnr@colostate.edu/mambaforge/condabin:/curc/sw/curc-quota/latest/bin:/curc/slurm/alpine/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS
+++ export PATH=/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/projects/ericacnr@colostate.edu/bin:/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/bin:/projects/ericacnr@colostate.edu/mambaforge/condabin:/curc/sw/curc-quota/latest/bin:/curc/slurm/alpine/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1
+++ PATH=/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/projects/ericacnr@colostate.edu/bin:/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/bin:/projects/ericacnr@colostate.edu/mambaforge/condabin:/curc/sw/curc-quota/latest/bin:/curc/slurm/alpine/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1
+++ export LD_LIBRARY_PATH=:/projects/ericacnr@colostate.edu/gsl-2.7.1/lib:/projects/ericacnr@colostate.edu/gsl-2.7.1/lib:/projects/ericacnr@colostate.edu/gsl-2.7.1/lib:/projects/ericacnr@colostate.edu/gsl-2.7.1/lib
+++ LD_LIBRARY_PATH=:/projects/ericacnr@colostate.edu/gsl-2.7.1/lib:/projects/ericacnr@colostate.edu/gsl-2.7.1/lib:/projects/ericacnr@colostate.edu/gsl-2.7.1/lib:/projects/ericacnr@colostate.edu/gsl-2.7.1/lib
+++ export LSCOLORS=EHfxcxdxBxegecabagacad
+++ LSCOLORS=EHfxcxdxBxegecabagacad
+++ export PATH=/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/projects/ericacnr@colostate.edu/bin:/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/bin:/projects/ericacnr@colostate.edu/mambaforge/condabin:/curc/sw/curc-quota/latest/bin:/curc/slurm/alpine/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4
+++ PATH=/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/projects/ericacnr@colostate.edu/bin:/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/bin:/projects/ericacnr@colostate.edu/mambaforge/condabin:/curc/sw/curc-quota/latest/bin:/curc/slurm/alpine/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4
+++ export PATH=/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/projects/ericacnr@colostate.edu/bin:/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/bin:/projects/ericacnr@colostate.edu/mambaforge/condabin:/curc/sw/curc-quota/latest/bin:/curc/slurm/alpine/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2/
+++ PATH=/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/projects/ericacnr@colostate.edu/bin:/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/bin:/projects/ericacnr@colostate.edu/mambaforge/condabin:/curc/sw/curc-quota/latest/bin:/curc/slurm/alpine/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2/
+++ alias 'ls=ls -G'
+++ alias 'scratch=cd /scratch/alpine/ericacnr@colostate.edu'
+++ alias 'projects=cd /projects/ericacnr@colostate.edu'
+++ alias 'gitup=eval "$(ssh-agent -s)"; ssh-add ~/.ssh/id_ed25519'
+++ alias 'GCRF_working=cd /scratch/alpine/ericacnr@colostate.edu/GCRF/Fastq'
+++ export TERM=screen
+++ TERM=screen
++++ /projects/ericacnr@colostate.edu/mambaforge/bin/conda shell.bash hook
+++ __conda_setup='export CONDA_EXE='\''/projects/ericacnr@colostate.edu/mambaforge/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/projects/ericacnr@colostate.edu/mambaforge/bin/python'\''
+
+# Copyright (C) 2012 Anaconda, Inc
+# SPDX-License-Identifier: BSD-3-Clause
+
+__conda_exe() (
+    "$CONDA_EXE" $_CE_M $_CE_CONDA "$@"
+)
+
+__conda_hashr() {
+    if [ -n "${ZSH_VERSION:+x}" ]; then
+        \rehash
+    elif [ -n "${POSH_VERSION:+x}" ]; then
+        :  # pass
+    else
+        \hash -r
+    fi
+}
+
+__conda_activate() {
+    if [ -n "${CONDA_PS1_BACKUP:+x}" ]; then
+        # Handle transition from shell activated with conda <= 4.3 to a subsequent activation
+        # after conda updated to >= 4.4. See issue #6173.
+        PS1="$CONDA_PS1_BACKUP"
+        \unset CONDA_PS1_BACKUP
+    fi
+    \local ask_conda
+    ask_conda="$(PS1="${PS1:-}" __conda_exe shell.posix "$@")" || \return
+    \eval "$ask_conda"
+    __conda_hashr
+}
+
+__conda_reactivate() {
+    \local ask_conda
+    ask_conda="$(PS1="${PS1:-}" __conda_exe shell.posix reactivate)" || \return
+    \eval "$ask_conda"
+    __conda_hashr
+}
+
+conda() {
+    \local cmd="${1-__missing__}"
+    case "$cmd" in
+        activate|deactivate)
+            __conda_activate "$@"
+            ;;
+        install|update|upgrade|remove|uninstall)
+            __conda_exe "$@" || \return
+            __conda_reactivate
+            ;;
+        *)
+            __conda_exe "$@"
+            ;;
+    esac
+}
+
+if [ -z "${CONDA_SHLVL+x}" ]; then
+    \export CONDA_SHLVL=0
+    # In dev-mode CONDA_EXE is python.exe and on Windows
+    # it is in a different relative location to condabin.
+    if [ -n "${_CE_CONDA:+x}" ] && [ -n "${WINDIR+x}" ]; then
+        PATH="$(\dirname "$CONDA_EXE")/condabin${PATH:+":${PATH}"}"
+    else
+        PATH="$(\dirname "$(\dirname "$CONDA_EXE")")/condabin${PATH:+":${PATH}"}"
+    fi
+    \export PATH
+
+    # We'\''re not allowing PS1 to be unbound. It must at least be set.
+    # However, we'\''re not exporting it, which can cause problems when starting a second shell
+    # via a first shell (i.e. starting zsh from bash).
+    if [ -z "${PS1+x}" ]; then
+        PS1=
+    fi
+fi
+
+conda activate base'
+++ '[' 0 -eq 0 ']'
+++ eval 'export CONDA_EXE='\''/projects/ericacnr@colostate.edu/mambaforge/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/projects/ericacnr@colostate.edu/mambaforge/bin/python'\''
+
+# Copyright (C) 2012 Anaconda, Inc
+# SPDX-License-Identifier: BSD-3-Clause
+
+__conda_exe() (
+    "$CONDA_EXE" $_CE_M $_CE_CONDA "$@"
+)
+
+__conda_hashr() {
+    if [ -n "${ZSH_VERSION:+x}" ]; then
+        \rehash
+    elif [ -n "${POSH_VERSION:+x}" ]; then
+        :  # pass
+    else
+        \hash -r
+    fi
+}
+
+__conda_activate() {
+    if [ -n "${CONDA_PS1_BACKUP:+x}" ]; then
+        # Handle transition from shell activated with conda <= 4.3 to a subsequent activation
+        # after conda updated to >= 4.4. See issue #6173.
+        PS1="$CONDA_PS1_BACKUP"
+        \unset CONDA_PS1_BACKUP
+    fi
+    \local ask_conda
+    ask_conda="$(PS1="${PS1:-}" __conda_exe shell.posix "$@")" || \return
+    \eval "$ask_conda"
+    __conda_hashr
+}
+
+__conda_reactivate() {
+    \local ask_conda
+    ask_conda="$(PS1="${PS1:-}" __conda_exe shell.posix reactivate)" || \return
+    \eval "$ask_conda"
+    __conda_hashr
+}
+
+conda() {
+    \local cmd="${1-__missing__}"
+    case "$cmd" in
+        activate|deactivate)
+            __conda_activate "$@"
+            ;;
+        install|update|upgrade|remove|uninstall)
+            __conda_exe "$@" || \return
+            __conda_reactivate
+            ;;
+        *)
+            __conda_exe "$@"
+            ;;
+    esac
+}
+
+if [ -z "${CONDA_SHLVL+x}" ]; then
+    \export CONDA_SHLVL=0
+    # In dev-mode CONDA_EXE is python.exe and on Windows
+    # it is in a different relative location to condabin.
+    if [ -n "${_CE_CONDA:+x}" ] && [ -n "${WINDIR+x}" ]; then
+        PATH="$(\dirname "$CONDA_EXE")/condabin${PATH:+":${PATH}"}"
+    else
+        PATH="$(\dirname "$(\dirname "$CONDA_EXE")")/condabin${PATH:+":${PATH}"}"
+    fi
+    \export PATH
+
+    # We'\''re not allowing PS1 to be unbound. It must at least be set.
+    # However, we'\''re not exporting it, which can cause problems when starting a second shell
+    # via a first shell (i.e. starting zsh from bash).
+    if [ -z "${PS1+x}" ]; then
+        PS1=
+    fi
+fi
+
+conda activate base'
++++ export CONDA_EXE=/projects/ericacnr@colostate.edu/mambaforge/bin/conda
++++ CONDA_EXE=/projects/ericacnr@colostate.edu/mambaforge/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/projects/ericacnr@colostate.edu/mambaforge/bin/python
++++ CONDA_PYTHON_EXE=/projects/ericacnr@colostate.edu/mambaforge/bin/python
++++ '[' -z x ']'
++++ conda activate base
++++ local cmd=activate
++++ case "$cmd" in
++++ __conda_activate activate base
++++ '[' -n '' ']'
++++ local ask_conda
+++++ PS1='[\h: \W]$ '
+++++ __conda_exe shell.posix activate base
+++++ /projects/ericacnr@colostate.edu/mambaforge/bin/conda shell.posix activate base
++++ ask_conda='. "/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/etc/conda/deactivate.d/openjdk_deactivate.sh"
+. "/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/etc/conda/deactivate.d/libglib_deactivate.sh"
+. "/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/etc/conda/deactivate.d/deactivate-r-base.sh"
+PS1='\''(base) [\h: \W]$ '\''
+export PATH='\''/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/projects/ericacnr@colostate.edu/bin:/projects/ericacnr@colostate.edu/mambaforge/bin:/projects/ericacnr@colostate.edu/mambaforge/condabin:/curc/sw/curc-quota/latest/bin:/curc/slurm/alpine/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2'\''
+export CONDA_PREFIX='\''/projects/ericacnr@colostate.edu/mambaforge'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf'\''
+export CONDA_EXE='\''/projects/ericacnr@colostate.edu/mambaforge/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/projects/ericacnr@colostate.edu/mambaforge/bin/python'\''
+. "/projects/ericacnr@colostate.edu/mambaforge/etc/conda/activate.d/libxml2_activate.sh"'
++++ eval '. "/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/etc/conda/deactivate.d/openjdk_deactivate.sh"
+. "/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/etc/conda/deactivate.d/libglib_deactivate.sh"
+. "/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/etc/conda/deactivate.d/deactivate-r-base.sh"
+PS1='\''(base) [\h: \W]$ '\''
+export PATH='\''/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/projects/ericacnr@colostate.edu/bin:/projects/ericacnr@colostate.edu/mambaforge/bin:/projects/ericacnr@colostate.edu/mambaforge/condabin:/curc/sw/curc-quota/latest/bin:/curc/slurm/alpine/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2'\''
+export CONDA_PREFIX='\''/projects/ericacnr@colostate.edu/mambaforge'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf'\''
+export CONDA_EXE='\''/projects/ericacnr@colostate.edu/mambaforge/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/projects/ericacnr@colostate.edu/mambaforge/bin/python'\''
+. "/projects/ericacnr@colostate.edu/mambaforge/etc/conda/activate.d/libxml2_activate.sh"'
+++++ . /projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/etc/conda/deactivate.d/openjdk_deactivate.sh
++++++ export JAVA_HOME=
++++++ JAVA_HOME=
++++++ unset JAVA_HOME_CONDA_BACKUP
++++++ '[' -z ']'
++++++ unset JAVA_HOME
++++++ export JAVA_LD_LIBRARY_PATH=
++++++ JAVA_LD_LIBRARY_PATH=
++++++ unset JAVA_LD_LIBRARY_PATH_BACKUP
++++++ '[' -z ']'
++++++ unset JAVA_LD_LIBRARY_PATH
+++++ . /projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/etc/conda/deactivate.d/libglib_deactivate.sh
++++++ export GSETTINGS_SCHEMA_DIR=
++++++ GSETTINGS_SCHEMA_DIR=
++++++ unset GSETTINGS_SCHEMA_DIR_CONDA_BACKUP
++++++ '[' -z ']'
++++++ unset GSETTINGS_SCHEMA_DIR
+++++ . /projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/etc/conda/deactivate.d/deactivate-r-base.sh
++++++ [[ ! -z '' ]]
++++++ unset RSTUDIO_WHICH_R
+++++ PS1='(base) [\h: \W]$ '
+++++ export PATH=/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/projects/ericacnr@colostate.edu/bin:/projects/ericacnr@colostate.edu/mambaforge/bin:/projects/ericacnr@colostate.edu/mambaforge/condabin:/curc/sw/curc-quota/latest/bin:/curc/slurm/alpine/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2
+++++ PATH=/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/projects/ericacnr@colostate.edu/bin:/projects/ericacnr@colostate.edu/mambaforge/bin:/projects/ericacnr@colostate.edu/mambaforge/condabin:/curc/sw/curc-quota/latest/bin:/curc/slurm/alpine/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2
+++++ export CONDA_PREFIX=/projects/ericacnr@colostate.edu/mambaforge
+++++ CONDA_PREFIX=/projects/ericacnr@colostate.edu/mambaforge
+++++ export CONDA_SHLVL=3
+++++ CONDA_SHLVL=3
+++++ export CONDA_DEFAULT_ENV=base
+++++ CONDA_DEFAULT_ENV=base
+++++ export 'CONDA_PROMPT_MODIFIER=(base) '
+++++ CONDA_PROMPT_MODIFIER='(base) '
+++++ export CONDA_PREFIX_2=/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf
+++++ CONDA_PREFIX_2=/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf
+++++ export CONDA_EXE=/projects/ericacnr@colostate.edu/mambaforge/bin/conda
+++++ CONDA_EXE=/projects/ericacnr@colostate.edu/mambaforge/bin/conda
+++++ export _CE_M=
+++++ _CE_M=
+++++ export _CE_CONDA=
+++++ _CE_CONDA=
+++++ export CONDA_PYTHON_EXE=/projects/ericacnr@colostate.edu/mambaforge/bin/python
+++++ CONDA_PYTHON_EXE=/projects/ericacnr@colostate.edu/mambaforge/bin/python
+++++ . /projects/ericacnr@colostate.edu/mambaforge/etc/conda/activate.d/libxml2_activate.sh
++++++ test -n ''
++++++ xml_catalog_files_libxml2=
++++++ XML_CATALOG_FILES=
++++++ conda_catalog_files=
++++++ ifs_libxml2=' 	
+'
++++++ IFS=' '
++++++ rem=/projects/ericacnr@colostate.edu/mambaforge
++++++ for pre in ${rem}
++++++ test '' = /projects/ericacnr@colostate.edu/mambaforge
++++++ conda_catalog_files=/projects/ericacnr@colostate.edu/mambaforge
++++++ rem=
++++++ IFS=' 	
+'
++++++ conda_catalog_files='file:///projects/ericacnr@colostate.edu/mambaforge/etc/xml/catalog file:///etc/xml/catalog'
++++++ export 'XML_CATALOG_FILES=file:///projects/ericacnr@colostate.edu/mambaforge/etc/xml/catalog file:///etc/xml/catalog'
++++++ XML_CATALOG_FILES='file:///projects/ericacnr@colostate.edu/mambaforge/etc/xml/catalog file:///etc/xml/catalog'
++++++ unset conda_catalog_files ifs_libxml2 rem
++++ __conda_hashr
++++ '[' -n '' ']'
++++ '[' -n '' ']'
++++ hash -r
+++ unset __conda_setup
+++ '[' -f /projects/ericacnr@colostate.edu/mambaforge/etc/profile.d/mamba.sh ']'
+++ . /projects/ericacnr@colostate.edu/mambaforge/etc/profile.d/mamba.sh
+++ . /projects/ericacnr@colostate.edu/env
++++ case ":${PATH}:" in
++ conda activate bioinf
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate bioinf
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) [\h: \W]$ '
+++ __conda_exe shell.posix activate bioinf
+++ /projects/ericacnr@colostate.edu/mambaforge/bin/conda shell.posix activate bioinf
++ ask_conda='. "/projects/ericacnr@colostate.edu/mambaforge/etc/conda/deactivate.d/libxml2_deactivate.sh"
+PS1='\''(bioinf) [\h: \W]$ '\''
+export PATH='\''/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/projects/ericacnr@colostate.edu/bin:/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/bin:/projects/ericacnr@colostate.edu/mambaforge/condabin:/curc/sw/curc-quota/latest/bin:/curc/slurm/alpine/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2'\''
+export CONDA_PREFIX='\''/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''bioinf'\''
+export CONDA_PROMPT_MODIFIER='\''(bioinf) '\''
+export CONDA_PREFIX_3='\''/projects/ericacnr@colostate.edu/mambaforge'\''
+export CONDA_EXE='\''/projects/ericacnr@colostate.edu/mambaforge/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/projects/ericacnr@colostate.edu/mambaforge/bin/python'\''
+. "/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/etc/conda/activate.d/activate-r-base.sh"
+. "/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/etc/conda/activate.d/libglib_activate.sh"
+. "/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/etc/conda/activate.d/openjdk_activate.sh"'
++ eval '. "/projects/ericacnr@colostate.edu/mambaforge/etc/conda/deactivate.d/libxml2_deactivate.sh"
+PS1='\''(bioinf) [\h: \W]$ '\''
+export PATH='\''/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/projects/ericacnr@colostate.edu/bin:/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/bin:/projects/ericacnr@colostate.edu/mambaforge/condabin:/curc/sw/curc-quota/latest/bin:/curc/slurm/alpine/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2'\''
+export CONDA_PREFIX='\''/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''bioinf'\''
+export CONDA_PROMPT_MODIFIER='\''(bioinf) '\''
+export CONDA_PREFIX_3='\''/projects/ericacnr@colostate.edu/mambaforge'\''
+export CONDA_EXE='\''/projects/ericacnr@colostate.edu/mambaforge/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/projects/ericacnr@colostate.edu/mambaforge/bin/python'\''
+. "/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/etc/conda/activate.d/activate-r-base.sh"
+. "/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/etc/conda/activate.d/libglib_activate.sh"
+. "/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/etc/conda/activate.d/openjdk_activate.sh"'
+++ . /projects/ericacnr@colostate.edu/mambaforge/etc/conda/deactivate.d/libxml2_deactivate.sh
++++ test -n ''
++++ unset XML_CATALOG_FILES
++++ unset xml_catalog_files_libxml2
+++ PS1='(bioinf) [\h: \W]$ '
+++ export PATH=/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/projects/ericacnr@colostate.edu/bin:/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/bin:/projects/ericacnr@colostate.edu/mambaforge/condabin:/curc/sw/curc-quota/latest/bin:/curc/slurm/alpine/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2
+++ PATH=/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/opt/TurboVNC/bin:/usr/lpp/mmfs/bin:/projects/ericacnr@colostate.edu/bin:/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/bin:/projects/ericacnr@colostate.edu/mambaforge/condabin:/curc/sw/curc-quota/latest/bin:/curc/slurm/alpine/scripts:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2:/projects/ericacnr@colostate.edu/rclone-v1.63.1-linux-amd64:/projects/ericacnr@colostate.edu/OpenBLAS:/projects/ericacnr@colostate.edu/gsl-2.7.1:/projects/ericacnr@colostate.edu/software/prinseq-lite/prinseq-lite-0.20.4:/projects/ericacnr@colostate.edu/SeqPrep2
+++ export CONDA_PREFIX=/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf
+++ CONDA_PREFIX=/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf
+++ export CONDA_SHLVL=4
+++ CONDA_SHLVL=4
+++ export CONDA_DEFAULT_ENV=bioinf
+++ CONDA_DEFAULT_ENV=bioinf
+++ export 'CONDA_PROMPT_MODIFIER=(bioinf) '
+++ CONDA_PROMPT_MODIFIER='(bioinf) '
+++ export CONDA_PREFIX_3=/projects/ericacnr@colostate.edu/mambaforge
+++ CONDA_PREFIX_3=/projects/ericacnr@colostate.edu/mambaforge
+++ export CONDA_EXE=/projects/ericacnr@colostate.edu/mambaforge/bin/conda
+++ CONDA_EXE=/projects/ericacnr@colostate.edu/mambaforge/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/projects/ericacnr@colostate.edu/mambaforge/bin/python
+++ CONDA_PYTHON_EXE=/projects/ericacnr@colostate.edu/mambaforge/bin/python
+++ . /projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/etc/conda/activate.d/activate-r-base.sh
++++ R CMD javareconf
++++ [[ ! -z '' ]]
++++ export RSTUDIO_WHICH_R=/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/bin/R
++++ RSTUDIO_WHICH_R=/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/bin/R
+++ . /projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/etc/conda/activate.d/libglib_activate.sh
++++ export GSETTINGS_SCHEMA_DIR_CONDA_BACKUP=
++++ GSETTINGS_SCHEMA_DIR_CONDA_BACKUP=
++++ export GSETTINGS_SCHEMA_DIR=/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/share/glib-2.0/schemas
++++ GSETTINGS_SCHEMA_DIR=/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/share/glib-2.0/schemas
+++ . /projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/etc/conda/activate.d/openjdk_activate.sh
++++ export JAVA_HOME_CONDA_BACKUP=
++++ JAVA_HOME_CONDA_BACKUP=
++++ export JAVA_HOME=/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf
++++ JAVA_HOME=/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf
++++ export JAVA_LD_LIBRARY_PATH_BACKUP=
++++ JAVA_LD_LIBRARY_PATH_BACKUP=
+++++ tr '[:upper:]' '[:lower:]'
+++++ uname -s
++++ os=linux
++++ [[ linux == \d\a\r\w\i\n ]]
++++ [[ '' == \l\i\n\u\x\-\a\a\r\c\h\6\4 ]]
++++ export JAVA_LD_LIBRARY_PATH=/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/jre/lib/amd64/server
++++ JAVA_LD_LIBRARY_PATH=/projects/ericacnr@colostate.edu/mambaforge/envs/bioinf/jre/lib/amd64/server
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ sample=199971
++ mkdir -p ../trim_merge
++ OUT=../trim_merge
++ ADAPTER=/scratch/alpine/ericacnr@colostate.edu/HTBAGS-Test/fastq_processing_test/01.fastq_processing/resources/adapters/TruSeq3-PE-2.fa
++ trimmomatic PE -threads 4 T199971_T2087_HY75HDSX2_L001_R1_001.fastq.gz T199971_T2087_HY75HDSX2_L001_R2_001.fastq.gz 199971_1.trimmed.fastq ../trim_merge/199971_1un.trimmed.fastq 199971_2.trimmed.fastq ../trim_merge/199971_2un.trimmed.fastq ILLUMINACLIP:/scratch/alpine/ericacnr@colostate.edu/HTBAGS-Test/fastq_processing_test/01.fastq_processing/resources/adapters/TruSeq3-PE-2.fa:2:30:10 SLIDINGWINDOW:4:20 LEADING:3 TRAILING:3 MINLEN:36
+TrimmomaticPE: Started with arguments:
+ -threads 4 T199971_T2087_HY75HDSX2_L001_R1_001.fastq.gz T199971_T2087_HY75HDSX2_L001_R2_001.fastq.gz 199971_1.trimmed.fastq ../trim_merge/199971_1un.trimmed.fastq 199971_2.trimmed.fastq ../trim_merge/199971_2un.trimmed.fastq ILLUMINACLIP:/scratch/alpine/ericacnr@colostate.edu/HTBAGS-Test/fastq_processing_test/01.fastq_processing/resources/adapters/TruSeq3-PE-2.fa:2:30:10 SLIDINGWINDOW:4:20 LEADING:3 TRAILING:3 MINLEN:36
+Using PrefixPair: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT' and 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA'
+Using Long Clipping Sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+Using Long Clipping Sequence: 'GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT'
+Using Long Clipping Sequence: 'TACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+ILLUMINACLIP: Using 1 prefix pairs, 4 forward/reverse sequences, 0 forward only sequences, 0 reverse only sequences
+Exception in thread "main" java.io.FileNotFoundException: T199971_T2087_HY75HDSX2_L001_R1_001.fastq.gz (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at org.usadellab.trimmomatic.fastq.FastqParser.parse(FastqParser.java:135)
+	at org.usadellab.trimmomatic.TrimmomaticPE.process(TrimmomaticPE.java:265)
+	at org.usadellab.trimmomatic.TrimmomaticPE.run(TrimmomaticPE.java:555)
+	at org.usadellab.trimmomatic.Trimmomatic.main(Trimmomatic.java:80)
