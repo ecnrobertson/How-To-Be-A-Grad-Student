@@ -130,6 +130,7 @@ sample=$1
 mkdir -p ../trim_merge
 #set the out path to this directory
 OUT="../trim_merge"
+ADAPTER="/scratch/alpine/ericacnr@colostate.edu/HTBAGS-Test/fastq_processing_test/01.fastq_processing/resources/adapters/TruSeq3-PE-2.fa"
 
 #here's you trimmomatic function
 #first you start by giving it the input files. the "$sample" will be replaces with the variable value. Replace this to match your file names.
@@ -137,9 +138,9 @@ OUT="../trim_merge"
 #then give it information on what adapters to looks for. I think there are defaults for this but you can also download and provide the adaptor sequences directly, as I've done here.
 #then some parameters for how it will identify and trim things
 trimmomatic PE -threads 4 T"$sample"_T2087_HY75HDSX2_L001_R1_001.fastq.gz T"$sample"_T2087_HY75HDSX2_L001_R2_001.fastq.gz  \
-  "$sample"_1.trimmed.fastq $OUT/"$sample"_1un.trimmed.fastq \
-  "$sample"_2.trimmed.fastq $OUT/"$sample"_2un.trimmed.fastq \
-  ILLUMINACLIP:../../resources/adapters/TruSeq3-PE-2.fa:2:30:10 \
+  $OUT/"$sample"_1.trimmed.fastq $OUT/"$sample"_1un.trimmed.fastq \
+  $OUT/"$sample"_2.trimmed.fastq $OUT/"$sample"_2un.trimmed.fastq \
+  ILLUMINACLIP:"$ADAPTER":2:30:10 \
   SLIDINGWINDOW:4:20 LEADING:3 TRAILING:3 MINLEN:36
 ```
 
@@ -150,8 +151,9 @@ Indexing the reference genome, only need to do this once so removing from the sc
 cd ../../resources/reference
 conda activate bioinf
 #create index for the reference genome, this allows the tools later to use the reference
-bwa index  genome.fasta
-samtools faidx genome.fasta
+gunzip mini-test-genome.fna.gz
+bwa index  mini-test-genome.fna
+samtools faidx mini-test-genome.fna
 ```
 
 ```{bash, label="02.map_rmdup.sbatch}
@@ -160,7 +162,7 @@ samtools faidx genome.fasta
 #SBATCH --output=BWA-Dup.%j.out
 #SBATCH --error=BWA_Dup.%j.err
 #################
-#SBATCH -t 24:00:00
+#SBATCH -t 1:00:00
 #SBATCH --partition=amilan
 #SBATCH --qos=normal
 #SBATCH --ntasks-per-node 4
@@ -186,9 +188,8 @@ PLATE="Plate1"
 sample=$1
 lane=L7
 ID="$PLATE.$sample"
-REFERENCE="../../resources/reference/genome.fasta"
+REFERENCE="../resources/reference/mini-test-genome.fna"
 
-cd ../../../01.fastq_processing/trim_merge
 #make the output directory
 mkdir -p ../bwa_mem
 OUT="../bwa_mem"
@@ -199,7 +200,7 @@ bwa mem  -t 4 $REFERENCE "$sample"_1.trimmed.fastq  \
 	"$sample"_2.trimmed.fastq > $OUT/aln_"$sample".sam 2> $OUT/aln_"$sample".error 
 
 #move into the output folder
-cd $OUT
+cd ../bwa_mem
 
 #3. Convert and sort alignments
 ##sort the .bam file
@@ -227,7 +228,7 @@ samtools sort -o "$sample"_fixm.sort.bam  "$sample"_fixm.bam
 rm "$sample"_fixm.bam
 
 ##Markdups
-samtools markdup "$sample"_fixm.sort.bam "$sample"_mkdup.bam
+samtools markdup "$sample"_fixm.sort.bam "$sample"_mkdup.RG.bam
 samtools index "$sample"_mkdup.RG.bam
 ```
 ## Coverage
@@ -241,7 +242,7 @@ This is doing it in groups:
 #SBATCH --output=COV.%A_%a.out
 #SBATCH --error=COV.%A_%a.err
 #################
-#SBATCH -t 24:00:00
+#SBATCH -t 1:00:00
 #SBATCH --partition=amilan
 #SBATCH --qos=normal
 #SBATCH --ntasks-per-node 1
@@ -264,13 +265,12 @@ mkdir -p cov
 cd cov
 
 #this is going to only call a subset of the bams, so you have to go in and change this when you run the next job to move onto the next subset
-for sample in `ls $IN/23N0042*_mkdup.RG.bam` ##you don't need to choose one sample, but you do need to choose 10 or less in the ls function
+for sample in `ls $IN/19*_mkdup.RG.bam` ##you don't need to choose one sample, but you do need to choose 10 or less in the ls function
 do
         bedtools genomecov -d -ibam $sample > "$sample"_cov.bedtools.txt
         awk '{if($3<500) {total+=$3; ++lines}} END {print FILENAME," ",total/lines}' "$sample"_cov.bedtools.txt >> covSummary.bedtools.txt
-	rm cov/"$sample"_cov.bedtools.txt
+	rm "$sample"_cov.bedtools.txt
 done
-
 ```
 
 This is doing it as an array. An array is....
@@ -341,9 +341,43 @@ We're going to be using GATK, which only works when you have decent coverage. Fo
 
 The first step of this process is to create the gvcf files. For this we need a "comms" file.
 
+```{bash, label="assemble-scaffold-lists.awk"}
+# when you are getting a header from one of the bams and it has been
+# turned into tab-delimited: @SQ\tsName\tLength
+# this will assemble it into groups of about 1 million bp, and no bigger
+# than 2 million bp, unless it is a single scaffold.
+
+
+BEGIN {
+  OFS = "\t";
+  LIM=4e6   # this is the rough limit we want
+}
+
+
+{
+  if($3 > LIM) {  # if the scaffold itself is bigger than the limit, just print it separately
+    print $3, "-L " $2, $3
+    next;
+  }
+  
+  # otherwise we add stuff together.  
+  sum +=$3
+  comm = sprintf("%s -L %s", comm, $2);
+  bps = sprintf("%s %s", bps, $3);
+  if(sum > LIM) {
+    print sum, comm, bps
+    sum = 0
+    comm = ""
+    bps = ""
+  }
+}
+
+```
+
 ```{bash}
 ##To prepare the comm_lines.txt file, choose one bam file; replace "$sample" with a specific sample name
-samtools view -H bwa_mem/"$sample"_mkdup.RG.bam | sed 's/SN://g; s/LN://g' | awk '/^@SQ/' | awk -f assemble-scaffold-lists.awk > vcf/comm_lines.txt
+mkdir -p vcf
+samtools view -H bwa_mem/199967_mkdup.RG.bam | sed 's/SN://g; s/LN://g' | awk '/^@SQ/' | awk -f assemble-scaffold-lists.awk > vcf/comm_lines.txt
 ```
 
 ```{bash, label="04a.call_genotypes.sbatch"}
@@ -353,12 +387,12 @@ samtools view -H bwa_mem/"$sample"_mkdup.RG.bam | sed 's/SN://g; s/LN://g' | awk
 #SBATCH --output=gvcf.%j.out
 #SBATCH --error=gvcf.%j.err
 #################
-#SBATCH -t 8:00:00
+#SBATCH -t 2:00:00
 #SBATCH -p amilan
 #SBATCH --qos=normal
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node 10
-#SBATCH --mem=37G
+#SBATCH --ntasks-per-node 4
+#SBATCH --mem=16G
 #################
 #SBATCH --mail-type=END
 #SBATCH  --mail-user=ericacnr@colostate.edu
@@ -369,39 +403,29 @@ set -x
 source ~/.bashrc
 
 #from inside the bwa_mem folder
-##for sample in `ls *.bam|cut -f 1 -d "_"|head -1`; do sbatch ../04a.call_genotypes.sbatch $sample; done
+##for sample in `ls *_mkdup.RG.bam|cut -f 1 -d "_"`; do echo $sample; sbatch ../04a.call_genotypes.sbatch $sample; done
 
 sample=$1
 
 ##Location of fasta file and 
-FASTA="resources/reference/genome.fasta"
+FASTA="../resources/reference/mini-test-genome.fna"
 
-cd vcf
-IN="../bwa_mem"
+mkdir -p ../vcf/raw_genotypes_HC
+OUT="../vcf/raw_genotypes_HC"
 
 #CONDA
-#conda activate gatk
+conda activate gatk_4
+
+#we need a specific reference genome dictionary
+gatk CreateSequenceDictionary -R $FASTA -O ../resources/reference/mini-test-genome.dict
+
 #if using jar file, the path is going to be specific to our you set up your conda environment
-#java -Djava.io.tmpdir=/scratch/alpine/foxhol@colostate.edu/tmp -Xmx96g -jar /curc/sw/install/bio/gatk/4.3.0.0/gatk-package-4.3.0.0-local.jar HaplotypeCaller \
-#       	-I  LOSH.x5.0_all.bam \
-#       	--sample-name ${sample} \
-#       	-R $FASTA \
-#       	--emit-ref-confidence GVCF \
-#       	-O raw_genotypes_HC/${sample}.raw.snps.indels.g.vcf
-
-#make output file
-
-mkdir -p ../raw_genotypes_HC
-
-#MODULE
-#if using gatk as module but need to specify space
-module load gatk
-gatk --java-options "-Djava.io.tmpdir=/scratch/alpine/ericacnr@colostate.edu/tmp" --java-options "-Xmx37g" HaplotypeCaller \
-	-I  $IN/"$sample"_mkdup.RG.bam \
+java -Djava.io.tmpdir=/scratch/alpine/ericacnr@colostate.edu/tmp -Xmx37g -jar /curc/sw/install/bio/gatk/4.3.0.0/gatk-package-4.3.0.0-local.jar HaplotypeCaller \
+	-I  "$sample"_mkdup.RG.bam \
 	--sample-name ${sample} \
 	-R $FASTA \
 	--emit-ref-confidence GVCF \
-	-O raw_genotypes_HC/${sample}.raw.snps.indels.g.vcf
+	-O $OUT/${sample}.raw.snps.indels.g.vcf
 ```
 
 ```{bash, label="04b.call_genotypes.sbatch"}
@@ -411,14 +435,14 @@ gatk --java-options "-Djava.io.tmpdir=/scratch/alpine/ericacnr@colostate.edu/tmp
 #SBATCH --output=genomedb.%j.out
 #SBATCH --error=genomedb.%j.err
 #################
-#SBATCH -t 24:00:00
+#SBATCH -t 1:00:00
 #SBATCH -p amilan
 #SBATCH --qos=normal
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node 10
-#SBATCH --mem=37G
+#SBATCH --ntasks-per-node 4
+#SBATCH --mem=16G
 #################
-#SBATCH --array=1-1
+#SBATCH --array=1-4
 #################
 #SBATCH --mail-type=END,FAIL
 #SBATCH  --mail-user=ericacnr@colostate.edu
@@ -427,7 +451,7 @@ gatk --java-options "-Djava.io.tmpdir=/scratch/alpine/ericacnr@colostate.edu/tmp
 set -x
 
 source ~/.bashrc
-conda activate bioinf
+conda activate gatk_4
 
 #running from the head directory 01.fastq_processing
 FASTA="resources/reference/genome.fasta"
@@ -443,11 +467,11 @@ SEG=$(awk -F"\t" -v n=$SLURM_ARRAY_TASK_ID 'NR == n {print $2}' $COMMS)
 #This step consists of consolidating the contents of GVCF files across all of your samples in order to improve scalability and speed the next step, joint genotyping. We will use the GenomicsDBImport tool and will need to make a new temporary directory.
 
 mkdir -p vcf/called_genotypes_HC
-module load gatk
-gatk --java-options "-Djava.io.tmpdir=/scratch/alpine/ericacnr@colostate.edu/tmp -Xmx37g" GenomicsDBImport \
+
+java -Djava.io.tmpdir=/scratch/alpine/ericacnr@colostate.edu/tmp -Xmx37g -jar /curc/sw/install/bio/gatk/4.3.0.0/gatk-package-4.3.0.0-local.jar GenomicsDBImport \
    $(printf ' --variant %s ' $GVCF/*g.vcf) \
-     --genomicsdb-workspace-path called_genotypes_HC/${SLURM_TASK_ID}_gcrf_database \
-      -L $SEG > $OUT.stdout 2>$OUT.stderr
+     --genomicsdb-workspace-path vcf/called_genotypes_HC/${SLURM_ARRAY_TASK_ID}_gcrf_database \
+      $SEG > vcf/$OUT.stdout 2> vcf/$OUT.stderr
 ```
 
 ## Filtering

@@ -137,5 +137,4 @@ writeRaster(masked_r, "data/spatial_files/land_cover/sand_NA_1x1km_ag.tif", over
 
 # merged.10 <- raster::aggregate(land.mask, fact=10, fun=mean)
 # writeRaster(merged.10,"data/spatial_files/land_cover/clay_NA_2.5x2.5km_ag.tif", overwrite=TRUE)
-
 ```
