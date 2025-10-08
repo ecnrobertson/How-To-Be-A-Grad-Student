@@ -8,6 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
 # INTRODUCTION
 So this will be a walk through of a pipeline for processing sequence data. This is a very basic pipline that should work with most WGS sequence data. These scripts are adapted and streamlined from scripts that Christen Bossu wrote and shared with me during my second year of my PhD.
 
@@ -39,32 +40,45 @@ Another option for submitting jobs is through an array. <insert details here>
 The file structure is going to be different for you, probably, but the file structure I use goes like this.
 
 Project Directory
-|- *analysis*
-  |-*01.fastq_processing*
+|- *analysis/*
+  |-*01.fastq_processing/*
     |-01.trim_merge.sbatch
     |-02.map_rmdup.sbatch
     |-03.coverage.sbatch
     |-04a.call_genotypes.sbatch
     |-04b.call_genotypes.sbatch
     |-05.filtering.sbatch
-    |-*raw_data*
+    |-*raw_data/*
       |-{sample}_R1.fastq
       |-{sample}_R2.fastq
       |-{sample}_1.trimmed.fastq
       |-{sample}_2.trimmed.fastq
-    |-*bwa_mem*
-      |-{sample}_rmdup.bam
-    |-*cov*
+    |-*bwa_mem/*
+      |-{sample}_mkdup.RG.bam
+    |-*cov/*
       |-covSummary.bedtools.txt
-    |-*vcf*
-      |-{sample}.vcf
+    |-*vcf/*
+      |-comm_lines.txt
+      |-*raw_genotypes_HC/*
+        |-{sample}.raw.snps.indels.g.vcf
+      |-*called_genotypes_HC/*
+        |-*{#}_database/*
+          |-callset.json
+          |-'CM031199.1$1$14000000'
+          |-
+      |-*unfilt_genotypes_HC/*
+        |-{#}_HC_genotypes_unfiltered.vcf.gz
+        |-{#}_HC_genotypes_unfiltered.vcf.gz.tbi
+      |-*mk_dp0_as_missing/*
+        |-{#}_HC_genotypes_unfiltered.mrkmiss.vcf.gz
+        |-{#}_HC_genotypes_unfiltered.mrkmiss.vcf.gz.tbi
 |- *resources*
   |-*reference*
     |-genome.fasta
   |-*adapters*
     |-TruSeq3-PE-2.fa:2:30:10
     
-  
+If your file structure ends up looking different (aka, you set things up differently) you will need to adjust paths within the scripts below to get them to work.
 
 ## Setting up a Conda Environment
 
@@ -156,7 +170,7 @@ bwa index  mini-test-genome.fna
 samtools faidx mini-test-genome.fna
 ```
 
-```{bash, label="02.map_rmdup.sbatch}
+```{bash, label="02.map_rmdup.sbatch"}
 #!/bin/bash
 #SBATCH --job-name=BWA_Dup
 #SBATCH --output=BWA-Dup.%j.out
@@ -408,7 +422,7 @@ source ~/.bashrc
 sample=$1
 
 ##Location of fasta file and 
-FASTA="../resources/reference/mini-test-genome.fna"
+REFERENCE="resources/reference/mini-test-genome.fna"
 
 mkdir -p ../vcf/raw_genotypes_HC
 OUT="../vcf/raw_genotypes_HC"
@@ -423,7 +437,7 @@ gatk CreateSequenceDictionary -R $FASTA -O ../resources/reference/mini-test-geno
 java -Djava.io.tmpdir=/scratch/alpine/ericacnr@colostate.edu/tmp -Xmx37g -jar /curc/sw/install/bio/gatk/4.3.0.0/gatk-package-4.3.0.0-local.jar HaplotypeCaller \
 	-I  "$sample"_mkdup.RG.bam \
 	--sample-name ${sample} \
-	-R $FASTA \
+	-R $REFERENCE \
 	--emit-ref-confidence GVCF \
 	-O $OUT/${sample}.raw.snps.indels.g.vcf
 ```
@@ -454,7 +468,6 @@ source ~/.bashrc
 conda activate gatk_4
 
 #running from the head directory 01.fastq_processing
-FASTA="resources/reference/genome.fasta"
 GVCF="vcf/raw_genotypes_HC"
 COMMS="vcf/comm_lines.txt"
 
@@ -470,9 +483,177 @@ mkdir -p vcf/called_genotypes_HC
 
 java -Djava.io.tmpdir=/scratch/alpine/ericacnr@colostate.edu/tmp -Xmx37g -jar /curc/sw/install/bio/gatk/4.3.0.0/gatk-package-4.3.0.0-local.jar GenomicsDBImport \
    $(printf ' --variant %s ' $GVCF/*g.vcf) \
-     --genomicsdb-workspace-path vcf/called_genotypes_HC/${SLURM_ARRAY_TASK_ID}_gcrf_database \
+     --genomicsdb-workspace-path vcf/called_genotypes_HC/${SLURM_ARRAY_TASK_ID}_database \
       $SEG > vcf/$OUT.stdout 2> vcf/$OUT.stderr
 ```
 
+```{bash, label="04c.call_genotypes.sbatch"}
+#!/bin/bash 
+#
+#SBATCH --job-name=genomedb
+#SBATCH --output=genomedb.%j.out
+#SBATCH --error=genomedb.%j.err
+#################
+#SBATCH -t 1:00:00
+#SBATCH -p amilan
+#SBATCH --qos=normal
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node 4
+#SBATCH --mem=16G
+#################
+#SBATCH --array=1-4
+#################
+#SBATCH --mail-type=END,FAIL
+#SBATCH  --mail-user=ericacnr@colostate.edu
+#################
+#echo commands to stdout
+
+set -x
+
+source ~/.bashrc
+conda activate gatk_4
+
+##To prepare the comm_lines.txt file, choose one bam file
+#samtools view -H bam_file | sed 's/SN://g; s/LN://g' | awk '/^@SQ/' | awk -f assemble-scaffold-lists.awk > AMRE.4m.comm_lines.txt
+
+REFERENCE="resources/reference/mini-test-genome.fna"
+GVCF="/scratch/alpine/cbossu@colostate.edu/LOSH/GVCF"
+COMMS="vcf/comm_lines.txt"
+OUTN=$(printf '%04d' $SLURM_ARRAY_TASK_ID)
+OUT=$OUTN
+
+SEG=$(awk -F"\t" -v n=$SLURM_ARRAY_TASK_ID 'NR == n {print $2}' $COMMS)
+     
+#Genotype all GVCF files
+
+mkdir -p vcf/unfilt_genotypes_HC
+
+java -Djava.io.tmpdir=/scratch/alpine/ericacnr@colostate.edu/tmp -Xmx37g -jar /curc/sw/install/bio/gatk/4.3.0.0/gatk-package-4.3.0.0-local.jar  GenotypeGVCFs \
+   -R $REFERENCE \
+   -V gendb://vcf/called_genotypes_HC/${SLURM_ARRAY_TASK_ID}_gcrf_database \
+   -O vcf/unfilt_genotypes_HC/${OUT}_HC_genotypes_unfiltered.vcf.gz > vcf/$OUT.stdout 2> vcf/$OUT.stderr
+```
+
+And this is a last step that is required because GATK calls missing genotypes as homozygous instead of leaving them as missing, which biases your data later. So this fixes that by manually marking them as missing.
+
+```{bash, label="04d.mark_dp0_missing.sbatch"}
+#!/bin/bash
+#
+#SBATCH --job-name=mrkmiss
+#SBATCH --output=mrkmiss.%j.out
+#SBATCH --error=mrkmiss.%j.err
+#################
+#SBATCH -t 1:00:00
+#SBATCH -p amilan
+#SBATCH --qos=normal
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node 2
+#SBATCH --mem=7G
+#################
+#SBATCH --mail-type=END
+#SBATCH  --mail-user=ericacnr@colostate.edu
+##################
+#echo commands to stdout
+set -x
+
+#run from vcf/unfilt_genotypes_HC/
+##for vcf in `ls *vcf.gz | cut -f 1 -d '_'`; do echo $vcf; sbatch ../../04d.mark_dp0_missing.sbatch $vcf; done
+source ~/.bashrc
+conda activate bioinf
+
+vcf=$1
+
+REFERENCE="resources/reference/mini-test-genome.fna"
+
+mkdir -p ../mk_dp0_as_missing
+
+bcftools +setGT ${vcf}_HC_genotypes_unfiltered.vcf.gz -- -t q -n . -i 'FMT/DP=0 | (FMT/PL[:0]=0 & FMT/PL[:1]=0 & FMT/PL[:2]=0)' | bcftools +fill-tags - -- -t 'NMISS=N_MISSING' | bcftools view -Oz - > ../mk_dp0_as_missing/${vcf}_HC_genotypes_unfiltered.mrkmiss.vcf.gz
+
+bcftools index -t ../mk_dp0_as_missing/${vcf}_HC_genotypes_unfiltered.mrkmiss.vcf.gz
+```
+
 ## Filtering
+There are lots of different ways to filter, and different threshold and filters to apply depending on what you're going to do with the data. Below is a generic script, with somewhat standard filters. Review Hemstrom et al 2024 "Next-generation data filtering in the genomics era" for a nice review of filtering steps and threshold depending on the downstream analyses being run.
+
+```{bash, label="05.merge_hardVQSR_filter.sbatch"}
+#!/bin/bash
+#
+#SBATCH --job-name=filt
+#SBATCH --output=filt.%j.out
+#SBATCH --error=filt.%j.err
+#################
+#SBATCH -t 1:00:00
+#SBATCH -p amilan
+#SBATCH --qos=normal
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node 2
+#SBATCH --mem=6G
+#################
+#SBATCH --mail-type=END
+#SBATCH  --mail-user=ericacnr@rams.colostate.edu
+##################
+#echo commands to stdout
+set -x
+
+source ~/.bashrc
+
+#run this from the 01.fastq_processing
+
+mkdir -p vcf/filtered_HC
+
+##Location of fasta file and
+REFERENCE="resources/reference/mini-test-genome.fna"
+IN="vcf/mk_dp0_as_missing"
+OUT="vcf/filtered_HC"
+
+conda activate bioinf
+###Merge vcfs of gatk run
+picard MergeVcfs \
+ $(printf ' -I %s' $IN/0*vcf.gz) \
+--OUTPUT $IN/merged_gatk.vcf.gz
+
+conda activate gatk_4
+###Select variants- SNPs
+java -Djava.io.tmpdir=/scratch/alpine/ericacnr@colostate.edu/tmp -Xmx37g -jar /curc/sw/install/bio/gatk/4.3.0.0/gatk-package-4.3.0.0-local.jar SelectVariants \
+     -R $REFERENCE \
+     -V $IN/merged_gatk.vcf \
+     -select-type SNP \
+     --O $OUT/merged_gatk.SNP.vcf
+     
+cd $OUT
+
+conda activate bioinf
+
+###VCFtools for filtering
+vcftools --vcf merged_gatk.SNP.vcf --out merged_gatk.SNP.05maf --min-alleles 2 --max-alleles 2 --max-missing 0.5 --maf 0.05 --recode
+
+conda activate gatk_4
+
+##GATK for hard filtering VWSR, Auwera et al 2013, with gatk4
+
+java -Djava.io.tmpdir=/scratch/alpine/ericacnr@colostate.edu/tmp -Xmx37g -jar /curc/sw/install/bio/gatk/4.3.0.0/gatk-package-4.3.0.0-local.jar VariantFiltration \
+-R $REFERENCE \
+-V merged_gatk.SNP.05maf.recode.vcf \
+-filter "QUAL < 30.0" --filter-name "QUAL30" \
+-filter "SOR > 3.0" --filter-name "SOR3" \
+-filter "FS > 60.0" --filter-name "FS60" \
+-filter "MQ < 40.0" --filter-name "MQ40" \
+-filter "QD < 2.0" --filter-name "QD2" \
+-filter "MQRankSum < -12.5" --filter-name "MQRankSum-12.5" \
+-filter "ReadPosRankSum < -8.0" --filter-name "ReadPosRankSum-8" \
+-O merged_gatk.SNP.filtered_gatkVQSR2.vcf
+
+#Exclude filtered variants (PASS= pass filters)
+java -Djava.io.tmpdir=/scratch/alpine/ericacnr@colostate.edu/tmp -Xmx37g -jar /curc/sw/install/bio/gatk/4.3.0.0/gatk-package-4.3.0.0-local.jar  SelectVariants \
+     -R $REFERENCE \
+     -V merged_gatk.SNP.filtered_gatkVQSR2.vcf \
+     --exclude-filtered  true \
+     -O merged_gatk.SNP.filtered_gatkVQSR2.PASS.vcf
+
+
+conda activate bioinf
+
+##VCFtools for filtering based on missingness, once you remove systematic errors. Play around with this to get the numbers you want and make sense
+vcftools --vcf merged_gatk.SNP.filtered_gatkVQSR2.PASS.vcf --out merged_gatk.SNP.filtered_gatkVQSR2.PASS.8miss --max-missing 0.8 --recode
+```
 
