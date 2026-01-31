@@ -7,17 +7,17 @@ output: html_document
 
 # Introduction
 
-How to structure project files is a pretty personal thing, but it took me a long time (3 years!) to settle on a good approach. It was something I hadn't thought much about coming into grad school and was complicated by not knowing enough to fully plan out (or even start to guess) what my workflow/methodology was going to look like. Also, it takes extra work and planning and intentional which can be hard to muster. But, that was before I realized the benefits of writing not only reproducible code, but organizing files so that they make sense. Now that I know, I enthusiastically invest time into improving these aspects of my project. So, why should you care?
+How to structure project files is a pretty personal thing, but it took me a long time (3 years!) to settle on a good approach. It was something I hadn't thought much about coming into grad school and was complicated by not knowing enough to fully plan out (or even start to guess) what my workflow/methodology was going to look like. Also, it takes extra work and planning and intentionality which can be hard to muster. But, that was before I realized the benefits of writing not only reproducible code, but organizing files so that they make sense. Now that I know, I enthusiastically invest time into improving these aspects of my project. So, why should you care?
 
 ## For You
 
 Consistency between projects and organized code is like having a tidy desk or room where you know where everything is. It's not only going to save time when you inevitably have to go back and figure out what you did but it will also make thinking through the whole process of a project that much easier. A great example of this is my first chapter work.
 
-When I started, I had no real organization system. I had many versions of "GCRF_master", and which one was the "master" was anything but clear. I couldn't keep track of what samples I had efficiently, regularly had embarrassing moments where I couldn't answer simple questions like "what's you sample size?" "what filters did you run?" "can you show me X figure?". You'll impress the heck out of your PI if you can come in from the beginning having everything under control, and it will save you a lot of time and stress. Another part of this is that, most likely, you will have to redo some analyses for your dissertation work. For me, I had to do my Chapter 1 analyses 4 separate times. This is challenging mentally, and made even harder by not being totally sure what you did the first time around and how to reproduce that or improve it. For me, having my code broken down by steps with running notes and details of what I was thinking and what the results meant was a huge step is feeling like I had control over my research and a fully grasp of what my project was about and what I was trying to do. Also, when I had to go to other projects and apply the same packages or needed similar figures, it was so much easier to find where I'd already figured it out and just copy and adjust the code rather than starting from scratch every time!
+When I started, I had no real organization system. I had many versions of "GCRF_master", and which one was the "master" was anything but clear. I couldn't keep track of what samples I had efficiently, regularly had embarrassing moments where I couldn't answer simple questions like "What's your sample size?" "What filters did you run?" "Can you show me X figure?". You'll impress the heck out of your PI if you can come in from the beginning having everything under control, and it will save you a lot of time and stress. Another part of this is that, most likely, you will have to redo some analyses for your dissertation work. For me, I had to do my Chapter 1 analyses 4 separate times. This is challenging mentally, and made even harder by not being totally sure what you did the first time around and how to reproduce that or improve it. For me, having my code broken down by steps with running notes and details of what I was thinking and what the results meant was a huge step is feeling like I had control over my research and a fully grasp of what my project was about and what I was trying to do. Also, when I had to go to other projects and apply the same packages or needed similar figures, it was so much easier to find where I'd already figured it out and just copy and adjust the code rather than starting from scratch every time!
 
 ## For Others
 
-A major goal of a graduate program is to do original research and share those results. A key part of being able to share your results is to also shoot for reproducibility. Organized code is essential for this. You want someone to be able to open up your project and understand exactly what you did, why you made decisions, and how they can do it themselves, and you want this to be an easy process. This is important not only for collaborations, helping others who are trying to run similar analyses, but it's actually often a requirement for publishing. When you submit a manuscript you don't just give them your figures and pdf file of the paper, you also upload the code you used to get the results and all of the files associated with a project. You can save yourself a lot of time, and your reviewers a lot of stress (which might make them less inclined to let you publish!) by keeping your code organized from the beginning.
+A major goal of a graduate program is to do original research and share those results. A key part of being able to share your results is to also shoot for reproducibility. Organized code is essential for this. You want someone to be able to open up your project and understand exactly what you did, why you made decisions, and how they can do it themselves, and you want this to be an easy process. This is important not only for collaborations and helping others who are trying to run similar analyses, but it's actually often a requirement for publishing. When you submit a manuscript you don't just give them your figures and pdf file of the paper, you also link the code you used to get the results and all of the files associated with a project. You can save yourself a lot of time, and your reviewers a lot of stress (which might make them less inclined to let you publish!) by keeping your code organized from the beginning.
 
 # Getting Started
 
@@ -57,16 +57,15 @@ An important point here is that, whatever file structure you come up with, it do
 
 There are some overarching ground rules to keep in mind before starting a project or considering file structure methods. They are:
 
-1.  Do not modify your raw data manually, or even better, at all.\
-    (Don’t give in to the temptation of opening a raw dataset in Excel and changing values.)
+1.  Do not modify your raw data manually, or even better, at all (Basically, don’t give in to the temptation of opening a raw dataset in Excel and changing values.)
 
 2.  Data manipulation should work like a conveyer belt: it stops at checkpoints. E.g., it gets modified/cleaned/analyzed, and then it moves on.
 
-3.  Code of different quality (scratch work vs. compiled binaries) should be separated.
+3.  Code of different quality (scratch work vs. final working code) should be separated.
 
 4.  Always have collaborators in mind, even if there is a 0% chance of getting collaborators. Work towards shareable code. Have public awareness. In a way, imagine if your code were to be released on GitHub *right now*.
 
-5.  Use relative file paths, not absolute paths, to facilitate shareability.
+5.  Use relative file paths, not absolute paths, to facilitate shareability. (Theoretically, someone can download your working folder and navigate without changing many, if any, paths)
 
 6.  **Consistency (within your project) is key.**
 
@@ -96,11 +95,11 @@ The basic components of a file structure are as follows:
 
 ## A starting point
 
-Figure out your base structure. You want a root directory that contains everything for that project. You want to think through how big this project is going to be (a small project might not need a super complex file structure plan). Assess the easiest way to access the data and code. It it chronological? Is it by analysis type? Is it why question? Is it all three??
+Figure out your base structure. You want a root directory that contains everything for that project. You want to think through how big this project is going to be (a small project might not need a super complex file structure plan). Assess the easiest way to access the data and code. It it chronological? Is it by analysis type? Is it by question? Is it all three??
 
 ## Naming files
 
-Please, please, please don't include spaces in your file names!!!! I cannot stress this enough. This is super important as your computer cannot interpret spaces easily and navigating and writing paths will become a pain in the behind if you have spaces. Plus, nothing gives away the fact that you don't know what you're doing faster than having spaces in file and folder names, and no one wants that.
+Please, please, please don't include spaces in your file names!!!! I cannot stress this enough. This is super important as your computer cannot interpret spaces easily and navigating and writing paths will become a pain in the butt if you have spaces. Plus, nothing gives away the fact that you don't know what you're doing faster than having spaces in file and folder names, and no one wants that.
 
 So what can you do? A couple options:
 
@@ -112,7 +111,7 @@ So what can you do? A couple options:
 
 -   Hyphen: raw-data, final-results, all-sample-map.png
 
--   A wild (but intentional) combination: BANS.6x.maf_0.05.SNP.above_4x.maxmiss\_.08.imputed4.1.vcf.gz
+-   A wild (but intentional) combination: BANS.6x.maf_0.05.SNP.above_4x.maxmiss_.08.imputed4.1.vcf.gz
 
 # Example Structures
 
