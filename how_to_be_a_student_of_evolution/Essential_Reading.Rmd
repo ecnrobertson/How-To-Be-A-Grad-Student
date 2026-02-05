@@ -10,24 +10,88 @@ This list is broken into two sections, Technical and Popular Literature.
 
 The Technical section will be made up of the foundational works by people like Darwin, Fisher, Dobzhansky, etc. This will be further broken into two sections, Books and Papers. The Book section will be books where the top names put forward big ideas (or synthesized work regarding these ideas). These are especially good for comprehensive exam prep. I will also include some of the basic papers that everyone should be familiar with.
 
-Popular Literature will be books that were written for a slightly more general audience, generally avoid math, and are good primers into the history of the field or the impact of the ideas. Examples here would be "Darwin's Dangerous Idea" (Dennet) and "Song of the Dodo" (Quammen).
+Popular Literature will be books that were written for a slightly more general audience, generally avoid math, and are good primers into the history of the field or the impact of the ideas. Examples here would be "Darwin's Dangerous Idea" (Dennett) and "Song of the Dodo" (Quammen).
 
 This list will start out as a dream reading list for myself. Hopefully, I will make it through most of these books. As I do so I will go back in and fill in a more detailed summary of and key points/take-aways from each book. The papers I probably won't be as detailed about as abstract serve a similar purpose, hopefully. Maybe I'll tack on some notes about the advancement that each paper represents, similarly to the books.
 
+I'm also going to through in a general Comps Reading List that goes beyond this core stuff into a specific paper recomendations from what I read for my comps that I think are generally useful.
+
 # Technical
 ## Books
+On The Origin of Species - Darwin, Charles
 Systematics and the Origin of Species - Mayr, Ernst
 Populations, Species, and Evolution, An Abridgment of Animal Species and Evolution - Mayr, Ernst
 Natural Selection in the Wild - Endler, John A.
 Geographic Variation, Speciation and Clines - Endler, John A.
 The Genetical Theory of Natural Selection - Sir Ronald A. Fisher
 Genetics and the Origin of Species (The Columbia Classics in Evolution) - Theodosius Dobzhansky, Stephen Jay Gould
+Evolution and the Genetics of Populations – Sewall Wright
+Molecular Evolution – Motoo Kimura
+The Causes of Evolution – J.B.S. Haldane
+Speciation - Coyne, Jerry A.
+Adaptation and Natural Selection - Williams, George Christopher
+Evolution: The Modern Synthesis - Huxley, Julian
 
 ## Papers
+Hardy (1908) Mendelian Proportions in a Mixed Population (Of Hardy and Weinberg equilibrium)
+Fisher (1918) The Correlation between Relatives on the Supposition of Mendelian Inheritance
+Wright (1931) Evolution in Mendelian Populations
+Kimura (1968) Evolutionary Rate at the Molecular Level
+Lande (1976) Natural Selection and Random Genetic Drift in Phenotypic Evolution
+Gould & Lewontin (1979) The Spandrels of San Marco and the Panglossian Paradigm: A Critique of the Adaptationist Programme
+Maynard Smith (1974) The theory of games and the evolution of animal conflicts
 
 # Popular Literature
 The song of the dodo: island biogeography in an age of extinctions - Quammen, David
 The Monk in the Garden: The Lost and Found Genius of Gregor Mendel, the Father of Genetics - Henig, Robin Marantz
 The Beak of the Finch: A Story of Evolution in Our Time - Weiner, Jonathan
+Darwin's Dangerous Idea: Evolution - Dennett, Daniel C.
+Wonderful Life: The Burgess Shale and the Nature of History - Gould, Stephen Jay
+The Selfish Gene - Dawkins, Richard
+Endless Forms Most Beautiful - Carroll, Sean B.
+The Gene: An intimate History - Mukherjee, Siddartha
+
+# Comprehensive Exam Readings
+Some general stuff, loosly categorized
+
+## Local Adaptation Specifics
+Adding this section because my focus in on local adaptation so I've got a good reading list for that.
+Levene (1953) Genetic Equilibrium When More than One Ecological Niche Is Available
+Kawecki & Ebert (2004) Conceptual issues in local adaptation
+Hereford (2009) A quantitative survey of local adaptation and fitness trade-offs
+Endler (1986) Natural Selection in the Wild (book)
+Levins (1968) Evolution in Changing Environments: Some Theoretical Explorations
+Slatkin (1973) Gene flow and selection in a cline
+Slatkin (1987) Gene flow and the geographic structure of natural populations
+Endler (1977) Geographic Variation, Speciation and Clines
+Rellstab (2015) A practical guide to environmental association analysis in landscape genomics
+Hoban (2016) Finding the genomic basis of local adaptation
+Savolainen (2013) Ecoloical Genomic of Local Adaptation
+Blanquart (2013) A Praactical Guide to Measuring Local Adaptation
+
+## General Ecology Foundational Papers
+*Macarthur (1958) Population Ecology of Some Warblers of Northeastern Coniferous Forests*
+Goal: understand how warblers are coexisting and the factors controlling species abundance. Main takeaways: competition doesn't allow fo coexistence so species must limit themselves rather than other; coexisting species divide up resources such that they're limited by different factors. Impact: introduced the idea of niche partiitioning to allow for coexistence.
+*Hurlbert (1984) Pseudoreplication and the Design of Ecological Field Experiements* followed by *Davies and Gray (2015) Don't let spurious accusations of pseudoreplication limit our ability to learn from natural experiments*
+Goal: introduce the idea of pseudoreplication and how it impacts ecological research. Main takeaways: successful execution of experiments requires avoiding introducing systemic and random error; mensurative and manipulative studies can both have pseudoreplication; issues of pseudoreplication mostly stem from misapplication of inferential statistics. Impact: shown light on a common flaw in ecological studies.
+*Hariston (1960) Community structure, population control, and competition*
+Goal: demonstrate a pattern of population control in many communities from a series of observations. Main takeaways: communities in which herbivores are held down in number and produces are resource-limited are more persistent; if more than one species exists at a trophic level they may avoid competition only if limited by resources completely un-utilized by other species. Impact: introduced HSS or "Green World Hypothesis", aka top-down control by predictors maintinging herbivores and allowing plant biomass to persist.
+*Platt (1964) Strong Inference* & *Fidge (2014) Fifty Years of J.R. Platt's Strong Inference*
+Goal: highlight a methodology for good science. Main takeaways: strong inference applied systematically and explicitly progresses science faster; next move in science should always depend on previous result; focus on disproving hypotheses. Impact: emphasized importance of falsification in science.
+*Soulé (1985) What is conservation biology?*
+Goal: summarize a lay out the core tennets of the new field of conservation biology. Main takeaways: conservation biology addresses the biology of species, communities, and ecosystems that are perturbed; made up of functional postulates and normative postulates; conservation biology is a "crisis field" in that we must make decisions without all available information. Impact: helped define the emerging field of conservation biology and influenced understanding and practice of conservation.
+*Forester (2022) Linking Evolutionary Potential to Extinction Risk: Applications and Future Direction*
+Goal: review EP theory, proxies and discuss applications. Main takeaways: evolutionary potential facilitates adaptive responses; conservation should focus on conserving across the breadth of adaptive diversity and protecting the integrity of processes that drive evolutionary change; considering EP in conservation decision making will improve extinction-risk assessments and conservation planning to ensure resilience. Impact: laid our a solid conceptual framework for understand and incorporating EP into conservation planning.
+*Clark (2022) The inverse Krogh Principle: All Organisms are Worthy of Study* and response to *Krogh (1929) The Progress of Physiology*
+Goal: advocate for studying diverse sets of species. Main takeaways: puts forward the inverse krogh principle, select an organism first and follow that with an appropriate question; this idea can promote passion and curiosity for science, amphasis of natural history. Impact: resisted an established idea that the species supports the question and instead pushes curiosity for species themselves.
+
+
+
+
+
+
+
+
+
 
 
