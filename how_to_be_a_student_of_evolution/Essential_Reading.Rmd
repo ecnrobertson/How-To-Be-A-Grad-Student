@@ -1,0 +1,33 @@
+---
+title: "Essential Reading"
+output: html_notebook
+---
+
+# Introduction
+The goal of this page is to go over some of the main figures in the field of evolutionary biology, specifically evolutionary genetics, and to provide some suggested readings for individuals interested in the subject. Specifically, this is aimed at graduates students. There's a long list of book I wish I'd read at some point during my PhD and am now cranking through at the end when I just have really read them at the beginning, especially before my comprehensive exams.
+
+This list is broken into two sections, Technical and Popular Literature. 
+
+The Technical section will be made up of the foundational works by people like Darwin, Fisher, Dobzhansky, etc. This will be further broken into two sections, Books and Papers. The Book section will be books where the top names put forward big ideas (or synthesized work regarding these ideas). These are especially good for comprehensive exam prep. I will also include some of the basic papers that everyone should be familiar with.
+
+Popular Literature will be books that were written for a slightly more general audience, generally avoid math, and are good primers into the history of the field or the impact of the ideas. Examples here would be "Darwin's Dangerous Idea" (Dennet) and "Song of the Dodo" (Quammen).
+
+This list will start out as a dream reading list for myself. Hopefully, I will make it through most of these books. As I do so I will go back in and fill in a more detailed summary of and key points/take-aways from each book. The papers I probably won't be as detailed about as abstract serve a similar purpose, hopefully. Maybe I'll tack on some notes about the advancement that each paper represents, similarly to the books.
+
+# Technical
+## Books
+Systematics and the Origin of Species - Mayr, Ernst
+Populations, Species, and Evolution, An Abridgment of Animal Species and Evolution - Mayr, Ernst
+Natural Selection in the Wild - Endler, John A.
+Geographic Variation, Speciation and Clines - Endler, John A.
+The Genetical Theory of Natural Selection - Sir Ronald A. Fisher
+Genetics and the Origin of Species (The Columbia Classics in Evolution) - Theodosius Dobzhansky, Stephen Jay Gould
+
+## Papers
+
+# Popular Literature
+The song of the dodo: island biogeography in an age of extinctions - Quammen, David
+The Monk in the Garden: The Lost and Found Genius of Gregor Mendel, the Father of Genetics - Henig, Robin Marantz
+The Beak of the Finch: A Story of Evolution in Our Time - Weiner, Jonathan
+
+
