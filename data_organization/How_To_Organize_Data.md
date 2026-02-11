@@ -244,15 +244,37 @@ Chapter_2/
 │   └── processes/     <- The original, immutable data dump.
 ├── analyses/
 │   ├── 01.fastq_processing/      <- I number these analyses by the order in which they are performed, always starting with 01.
-│   │   ├── 01.fastq_processing.Rmd <- This is the R markdown file that has all my steps, code, notes, etc for this part of the anlaysis, sometimes there's an a and b and c if it's multiple steps
-│   │   └── 01.results/      <- output and results for this analyses, sometimes you might want an "out" and a "results" file if you have lots of intermediate files
+│   │   ├── code/
+│   │   │   └── 01.fastq_processing.Rmd <- This is the R markdown file that has all my steps, code, notes, etc for this part of the anlaysis, sometimes there's an a and b and c if it's multiple steps
+│   │   ├── intermediates/
+│   │   │   ├── admixture/
+│   │   │   ├── pca/
+│   │   │   └── tif_files/
+│   │   ├── figures/
+│   │   │   ├── admixture/
+│   │   │   ├── pca/
+│   │   │   └── maps/
+│   │   ├── outputs/
+│   │   │   ├── ...tif
+│   │   │   ├── ...tsv
+│   │   │   └── final_ESU_figures/
 │   ├── 02.imputation/      <- this is actually run on the cluster
-│   │   └──02.imputation.Rmd <- this is the code and steps, but I don't actually run it here or have the results on my local computer
+│   │   ├── code/
+│   │   │   └── 02.imputation.Rmd <- this is the code and steps, but I don't actually run it here or have the results on my local computer
 │   ├── 03.GEA/
 │   │   ├──03.1.gradient_forest.Rmd   <- sometimes instead of a and b I use 1, 2, and 3... substeps verses separate programs...
-│   │   └──03.results/
+│   │   ├── code/
+│   │   │   ├── 03.1.RDA_env_vars.Rmd   <- sometimes instead of a and b I use 1, 2, and 3... substeps verses separate programs...
+│   │   │   ├── 03.2.RDA.Rmd      <- this is the markdown file with the scripts and steps and notes and interpretations
+│   │   │   ├── 03.2.RDA_cluster.R      <- this is the version that I actually run on the cluster
+│   │   ├── intermediates/
+│   │   ├── figures/
+│   │   ├── outputs/
 ├── manuscript/
 │   ├── ME/       <- manuscript files and figures and cover letter that are going to Molecular Ecology
+│   │   ├── figures/    <- all the final *final* versions of figures clearly labeled for upload to the submission portal
+│   │   ├── drafts/     <- the drafts and revisions that get exported from google drive (where they're actually written), version noted
+│   │   ├── proofs/     <- the proofs that the submission portal provides after you're put everything together as a record of what was submmited
 │   └── SRA_submission/   <- this is where I put all of the files that are compiled for the SRA submission process
 </pre>
 ```
